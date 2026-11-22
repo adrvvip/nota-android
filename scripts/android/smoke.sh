@@ -11,8 +11,12 @@ adb shell appops set $pkg MANAGE_EXTERNAL_STORAGE allow >> $out/5-install.log 2>
 adb shell monkey -p $pkg -c android.intent.category.LAUNCHER 1 >> $out/5-install.log 2>&1
 sleep 20
 adb exec-out screencap -p > $out/shot-1.png
-sleep 25
+adb shell input keyevent KEYCODE_BACK   # closes the What's new window
+sleep 6
 adb exec-out screencap -p > $out/shot-2.png
+adb shell input tap 300 300
+sleep 4
+adb exec-out screencap -p > $out/shot-3.png
 pid=$(adb shell pidof $pkg | tr -d '\r')
 echo "pid=$pid" > $out/5-pid.txt
 adb logcat -d > $out/6-logcat-all.log 2>&1

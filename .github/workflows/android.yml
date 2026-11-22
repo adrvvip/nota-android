@@ -105,7 +105,7 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: Run on emulator (tablet)
+      - name: Run on emulator (phone, landscape)
         continue-on-error: true
         timeout-minutes: 25
         uses: reactivecircus/android-emulator-runner@v2
@@ -113,7 +113,7 @@ jobs:
           api-level: 34
           target: google_apis
           arch: x86_64
-          profile: pixel_tablet
+          profile: pixel_7
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: bash scripts/android/smoke.sh

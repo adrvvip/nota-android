@@ -286,8 +286,7 @@ public partial class App : Avalonia.Application
     private void StartSingleView(ISingleViewApplicationLifetime single, ILogSink log)
     {
         var host = new WindowHost();
-        host.Bind(Panel.BackgroundProperty, host.GetResourceObservable("Brush.BgApp"));
-        single.MainView = host;
+        single.MainView = new AndroidRootView(host);
         AppDomain.CurrentDomain.UnhandledException += (_, e) => Console.WriteLine("Nota unhandled: " + e.ExceptionObject);
         Avalonia.Threading.Dispatcher.UIThread.UnhandledException += (_, e) =>
         {

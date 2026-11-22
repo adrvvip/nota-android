@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Android 9+: draw under the camera cutout too; Nota keeps its content clear of it
+       (AndroidRootView pads by the safe area), so no white band shows beside it. -->
+  <style name="NotaTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:windowBackground">@color/nota_bg</item>
+    <item name="android:statusBarColor">@color/nota_bg</item>
+    <item name="android:navigationBarColor">@color/nota_bg</item>
+    <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+  </style>
+</resources>
