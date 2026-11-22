@@ -12,7 +12,7 @@ adb shell monkey -p $pkg -c android.intent.category.LAUNCHER 1 >> $out/5-install
 sleep 20
 adb exec-out screencap -p > $out/shot-1.png
 adb shell input keyevent KEYCODE_BACK   # closes the What's new window
-sleep 6
+sleep 12
 adb exec-out screencap -p > $out/shot-2.png
 adb shell input tap 300 300
 sleep 4
@@ -21,6 +21,6 @@ pid=$(adb shell pidof $pkg | tr -d '\r')
 echo "pid=$pid" > $out/5-pid.txt
 adb logcat -d > $out/6-logcat-all.log 2>&1
 if [ -n "$pid" ]; then grep -E "\( *$pid\)| $pid +[0-9]+ " $out/6-logcat-all.log | tail -n 3000 > $out/6-logcat.log; fi
-grep -E "AndroidRuntime|FATAL|DEBUG  |MonoDroid|mono-rt|DOTNET" $out/6-logcat-all.log | tail -n 800 > $out/7-crash.log
+grep -E -A12 "ANR in|AndroidRuntime|FATAL|DEBUG  |MonoDroid|mono-rt|DOTNET" $out/6-logcat-all.log | tail -n 800 > $out/7-crash.log
 rm -f $out/6-logcat-all.log
 exit 0

@@ -34,29 +34,33 @@ internal sealed class AndroidRootView : Border
     /// <summary>The scale the desktop layout is drawn at on this screen (1 on a tablet).</summary>
     public static double Fit { get; private set; } = 1;
 
+    private Thickness _safePx;
+
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
-        if (TopLevel.GetTopLevel(this)?.InsetsManager is { } insets)
+        var top = TopLevel.GetTopLevel(this);
+        if (top is null) return;
+        top.ScalingChanged += (_, _) => Refit();
+        // Back closes the topmost floating window first, as a desktop's Esc / close would.
+        top.BackRequested += (_, args) => { if (WindowHost.Current?.HandleBack() == true) args.Handled = true; };
+        if (top.InsetsManager is { } insets)
         {
             insets.DisplayEdgeToEdgePreference = true;
-            insets.SafeAreaChanged += (_, _) => ApplySafeArea(insets);
-            ApplySafeArea(insets);
+            insets.SafeAreaChanged += (_, _) => { _safePx = insets.SafeAreaPadding; Refit(); };
+            _safePx = insets.SafeAreaPadding;
         }
-    }
-
-    private void ApplySafeArea(Avalonia.Controls.Platform.IInsetsManager insets)
-    {
-        // The safe area comes in device pixels; layout is in DIPs.
-        var p = insets.SafeAreaPadding;
-        double k = TopLevel.GetTopLevel(this)?.RenderScaling ?? 1;
-        if (k <= 0) k = 1;
-        Padding = new Thickness(p.Left / k, p.Top / k, p.Right / k, p.Bottom / k);
         Refit();
     }
 
     private void Refit()
     {
+        // The safe area comes in device pixels; layout is in DIPs, and the scaling is only
+        // known once the view has a surface — so it is converted here, every time.
+        double k = TopLevel.GetTopLevel(this)?.RenderScaling ?? 1;
+        if (k <= 0) k = 1;
+        var pad = new Thickness(_safePx.Left / k, _safePx.Top / k, _safePx.Right / k, _safePx.Bottom / k);
+        if (pad != Padding) Padding = pad;
         double w = Bounds.Width - Padding.Left - Padding.Right;
         double h = Bounds.Height - Padding.Top - Padding.Bottom;
         if (w <= 0 || h <= 0) return;

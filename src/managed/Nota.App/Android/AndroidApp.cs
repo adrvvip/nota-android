@@ -60,14 +60,6 @@ public sealed class MainActivity : AvaloniaMainActivity
         AndroidAccess.UpdateUserHome(this);   // "All files access" may have just been granted
     }
 
-    [Obsolete]
-    public override void OnBackPressed()
-    {
-        // Back closes the topmost floating window first; with only the main window left it
-        // leaves the app as usual.
-        if (WindowHost.Current?.HandleBack() == true) return;
-        base.OnBackPressed();
-    }
 }
 
 /// <summary>Storage and microphone access. Nota works on files by path like on the desktop,
