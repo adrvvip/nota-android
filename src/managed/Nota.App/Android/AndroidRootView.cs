@@ -47,6 +47,7 @@ internal sealed class AndroidRootView : Border
         if (top.InsetsManager is { } insets)
         {
             insets.DisplayEdgeToEdgePreference = true;
+            insets.IsSystemBarVisible = false;   // fullscreen: a swipe from the edge shows the bars for a moment
             insets.SafeAreaChanged += (_, _) => { _safePx = insets.SafeAreaPadding; Refit(); };
             _safePx = insets.SafeAreaPadding;
         }

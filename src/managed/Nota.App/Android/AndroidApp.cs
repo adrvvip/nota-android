@@ -52,6 +52,34 @@ public sealed class MainActivity : AvaloniaMainActivity
     {
         base.OnCreate(savedInstanceState);
         AndroidAccess.AskOnce(this);
+        AndroidMidi.Start(this);
+        GoFullscreen();
+    }
+
+    public override void OnWindowFocusChanged(bool hasFocus)
+    {
+        base.OnWindowFocusChanged(hasFocus);
+        if (hasFocus) GoFullscreen();   // a dialog or the shade brought the bars back
+    }
+
+    // Fullscreen (immersive): no status bar or navigation bar; swiping in from an edge shows
+    // them for a moment.
+    private void GoFullscreen()
+    {
+        if (Window is not { } window) return;
+        if (OperatingSystem.IsAndroidVersionAtLeast(30) && window.InsetsController is { } c)
+        {
+            c.Hide(global::Android.Views.WindowInsets.Type.SystemBars());
+            c.SystemBarsBehavior = (int)global::Android.Views.WindowInsetsControllerBehavior.ShowTransientBarsBySwipe;
+        }
+        else if (window.DecorView is { } decor)
+        {
+#pragma warning disable CA1422, CS0618
+            decor.SystemUiVisibility = (global::Android.Views.StatusBarVisibility)(global::Android.Views.SystemUiFlags.Fullscreen | global::Android.Views.SystemUiFlags.HideNavigation
+                | global::Android.Views.SystemUiFlags.ImmersiveSticky | global::Android.Views.SystemUiFlags.LayoutStable
+                | global::Android.Views.SystemUiFlags.LayoutHideNavigation | global::Android.Views.SystemUiFlags.LayoutFullscreen);
+#pragma warning restore CA1422, CS0618
+        }
     }
 
     protected override void OnResume()

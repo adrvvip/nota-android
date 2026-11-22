@@ -226,6 +226,17 @@ if(APPLE)
         src/audio_io/macos/MidiConfig.mm
         src/audio_io/macos/GamepadInput.mm
     )
+elseif(ANDROID)
+    # Android: miniaudio (AAudio / OpenSL) for audio; MIDI devices come from the app through
+    # android.media.midi (src/audio_io/android/Midi_android.cpp).
+    list(APPEND NOTA_ENGINE_SOURCES
+        src/audio_io/desktop/miniaudio_impl.cpp
+        src/audio_io/desktop/MiniaudioBackend.cpp
+        src/audio_io/desktop/MiniaudioInput.cpp
+        src/audio_io/desktop/AudioConfig_miniaudio.cpp
+        src/audio_io/android/Midi_android.cpp
+        src/audio_io/desktop/GamepadInput_stub.cpp
+    )
 elseif(WIN32 OR (UNIX AND NOT APPLE))
     list(APPEND NOTA_ENGINE_SOURCES
         src/audio_io/desktop/miniaudio_impl.cpp        # the single MINIAUDIO_IMPLEMENTATION TU
@@ -316,8 +327,7 @@ elseif(WIN32)
     target_link_libraries(nota_engine PRIVATE advapi32 user32 avrt)
 elseif(ANDROID)
     # Android: miniaudio talks to AAudio / OpenSL ES, loaded at run time (dlopen), so only
-    # the NDK's log/dl/m are linked. RtMidi builds its dummy API (no Android backend):
-    # MIDI on Android reaches the engine from the app side (android.media.midi).
+    # the NDK's log/dl/m are linked. MIDI reaches the engine from the app side.
     target_link_libraries(nota_engine PRIVATE log dl m)
 elseif(UNIX AND NOT APPLE)
     # RtMidi -> ALSA sequencer (__LINUX_ALSA__), which links libasound directly.
