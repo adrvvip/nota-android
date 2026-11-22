@@ -116,6 +116,20 @@ public class Window : ContentControl
     public IReadOnlyList<WindowTransparencyLevel> TransparencyLevelHint { get => GetValue(TransparencyLevelHintProperty); set => SetValue(TransparencyLevelHintProperty, value); }
 
     public PixelPoint Position { get; set; }
+
+    // A window's size and limits describe its frame, not a layout constraint on the control:
+    // the host sizes the frame from them (clamped to the screen) and the window's content
+    // fills the frame. Hiding Layoutable's members keeps a desktop-sized main window
+    // (Width 1200, MinWidth 1100) from overflowing a phone.
+    private double _width = double.NaN, _height = double.NaN, _minWidth, _minHeight;
+    private double _maxWidth = double.PositiveInfinity, _maxHeight = double.PositiveInfinity;
+    public new double Width { get => _width; set { _width = value; Relayout(); } }
+    public new double Height { get => _height; set { _height = value; Relayout(); } }
+    public new double MinWidth { get => _minWidth; set { _minWidth = value; Relayout(); } }
+    public new double MinHeight { get => _minHeight; set { _minHeight = value; Relayout(); } }
+    public new double MaxWidth { get => _maxWidth; set { _maxWidth = value; Relayout(); } }
+    public new double MaxHeight { get => _maxHeight; set { _maxHeight = value; Relayout(); } }
+    private void Relayout() { if (_shown) WindowHost.Current?.Relayout(this); }
     public WindowScreens Screens { get; }
     public Window? Owner { get; private set; }
     public IReadOnlyList<Window> OwnedWindows => _owned;
@@ -378,13 +392,15 @@ public sealed class WindowHost : Panel
         }
 
         double width = double.IsNaN(w.Width) || w.SizeToContent is SizeToContent.Width or SizeToContent.WidthAndHeight
-            ? double.NaN : Math.Min(w.Width, maxW);
+            ? double.NaN : Math.Min(Math.Max(w.Width, w.MinWidth), maxW);
         double height = double.IsNaN(w.Height) || w.SizeToContent is SizeToContent.Height or SizeToContent.WidthAndHeight
-            ? double.NaN : Math.Min(w.Height + 32, maxH);
+            ? double.NaN : Math.Min(Math.Max(w.Height, w.MinHeight) + 32, maxH);
         frame.Width = width;
         frame.Height = height;
-        frame.MaxWidth = maxW;
-        frame.MaxHeight = maxH;
+        frame.MinWidth = Math.Min(w.MinWidth, maxW);
+        frame.MinHeight = Math.Min(w.MinHeight + 32, maxH);
+        frame.MaxWidth = Math.Min(w.MaxWidth, maxW);
+        frame.MaxHeight = Math.Min(w.MaxHeight + 32, maxH);
         frame.Measure(new Size(maxW, maxH));
         var size = frame.DesiredSize;
         double x = Math.Max(12, (area.Width - size.Width) / 2), y = Math.Max(12, (area.Height - size.Height) / 2);
@@ -407,6 +423,8 @@ public sealed class WindowHost : Panel
             Canvas.SetTop(frame, y);
         }
     }
+
+    internal void Relayout(Window w) => Place(w);
 
     internal void Remove(Window w)
     {
