@@ -70,6 +70,7 @@ jobs:
           cmake --build build-ndk --target nota_engine -- -k 0 2>&1 | tee -a ci-logs/2-native.log
           mkdir -p src/native/nota.engine/build-android/arm64-v8a
           cp build-ndk/libnota_engine.so src/native/nota.engine/build-android/arm64-v8a/
+          "$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip" --strip-unneeded src/native/nota.engine/build-android/arm64-v8a/libnota_engine.so
           ls -la src/native/nota.engine/build-android/arm64-v8a | tee -a ci-logs/2-native.log
 
       - name: APK

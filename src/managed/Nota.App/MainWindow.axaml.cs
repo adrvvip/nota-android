@@ -99,7 +99,7 @@ public partial class MainWindow : NotaMainWindowBase
         // Linux desktops (GNOME/KDE) draw their own title bar and their client-side
         // decoration story is inconsistent, so keep NATIVE decorations there and hide
         // our custom bar — the doc title shows in the OS title bar instead.
-        if (OperatingSystem.IsLinux())
+        if (NotaWindow.HostDrawsFrame)
         {
             ExtendClientAreaToDecorationsHint = false;
             TitleBar.IsVisible = false;
@@ -115,7 +115,7 @@ public partial class MainWindow : NotaMainWindowBase
         // (3 × ~46px ≈ 142px, rounded up a touch). Linux hides the bar.
         var root = (Control)Content!;
         Content = null;
-        Content = NotaUiScale.Wrap(this, root, OperatingSystem.IsLinux() ? 0 : 32);
+        Content = NotaUiScale.Wrap(this, root, NotaWindow.HostDrawsFrame ? 0 : 32);
         NotaUiScale.Track(TitleBarRow, s =>
         {
             if (OperatingSystem.IsMacOS()) TitleBarRow.ColumnDefinitions[0].Width = new GridLength(78 / s);
@@ -128,7 +128,7 @@ public partial class MainWindow : NotaMainWindowBase
         // Platform-specific window icon: Windows/Linux get the .ico bundle from
         // assets/icons/windows so the taskbar / alt-tab shows the brand mark. macOS
         // uses the .icns produced by scripts/bundle-mac.sh for the dock/Finder.
-        if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !OperatingSystem.IsAndroid())
         {
             Icon = new WindowIcon(Avalonia.Platform.AssetLoader.Open(new Uri("avares://Nota.App/Assets/nota.ico")));
         }
@@ -144,7 +144,7 @@ public partial class MainWindow : NotaMainWindowBase
         // XAML sets WindowState before the named controls exist (InitializeComponent),
         // hence the null guard; the default bar visibility already matches non-fullscreen.
         if (change.Property == WindowStateProperty && TitleBar is { } bar)
-            bar.IsVisible = !OperatingSystem.IsLinux() && WindowState != WindowState.FullScreen;
+            bar.IsVisible = !NotaWindow.HostDrawsFrame && WindowState != WindowState.FullScreen;
     }
 
     // Custom frameless title bar (Phase 2): drag the window by its top bar; a

@@ -107,7 +107,7 @@ public partial class MainWindow
         B("view.history", () => Browser.ShowHistory());
         B("view.midiLearn", ToggleMidiLearn);
         B("view.fullscreen", ToggleFullscreen);
-        r.Bind(CommandCatalog.Palette, (c, _) => TogglePalette(c.Window as Avalonia.Controls.Window));
+        r.Bind(CommandCatalog.Palette, (c, _) => TogglePalette(c.Window as Window));
 
         // ---- Transport
         B("transport.playStop", () => _vm?.Transport.PlayStopCommand.Execute(null));

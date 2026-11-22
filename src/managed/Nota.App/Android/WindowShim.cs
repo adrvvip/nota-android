@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Platform;
+using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Input.Platform;
 using Avalonia.Interactivity;
@@ -49,9 +50,8 @@ public sealed class WindowScreens
     private readonly Window _window;
     internal WindowScreens(Window window) => _window = window;
 
-    private Avalonia.Platform.Screens? Real => TopLevel.GetTopLevel(_window)?.Screens;
-    public Screen? Primary => Real?.Primary;
-    public IReadOnlyList<Screen> All => Real?.All ?? Array.Empty<Screen>();
+    public Screen? Primary => TopLevel.GetTopLevel(_window)?.Screens?.Primary;
+    public IReadOnlyList<Screen> All => TopLevel.GetTopLevel(_window)?.Screens?.All ?? Array.Empty<Screen>();
     public int ScreenCount => All.Count;
     public Screen? ScreenFromWindow(Window _) => Primary;
     public Screen? ScreenFromPoint(PixelPoint _) => Primary;
@@ -264,7 +264,8 @@ public sealed class WindowHost : Panel
         var close = new Button
         {
             Content = "✕",
-            Padding = new Thickness(14, 4),
+            Padding = new Thickness(16, 0),
+            Height = 32,
             VerticalAlignment = VerticalAlignment.Center,
             Background = Brushes.Transparent,
         };
@@ -277,7 +278,13 @@ public sealed class WindowHost : Panel
             TextTrimming = TextTrimming.CharacterEllipsis,
         };
         title[!TextBlock.TextProperty] = w[!Window.TitleProperty];
-        var bar = new DockPanel { Height = 40, Background = new SolidColorBrush(Color.FromArgb(0x30, 0x80, 0x80, 0x80)) };
+        // The desktop's raised title band (NotaWindow), with the close button where Windows has it.
+        var bar = new DockPanel { Height = 32 };
+        bar.Bind(Panel.BackgroundProperty, bar.GetResourceObservable("Brush.SurfaceRaised"));
+        title.Classes.Add("Heading");
+        title.HorizontalAlignment = HorizontalAlignment.Center;
+        title.Bind(TextBlock.ForegroundProperty, title.GetResourceObservable("Brush.TextPrimary"));
+        close.Bind(Button.ForegroundProperty, close.GetResourceObservable("Brush.TextPrimary"));
         DockPanel.SetDock(close, Dock.Right);
         bar.Children.Add(close);
         bar.Children.Add(title);
@@ -294,10 +301,11 @@ public sealed class WindowHost : Panel
             CornerRadius = new CornerRadius(8),
             ClipToBounds = true,
             BorderThickness = new Thickness(1),
-            BorderBrush = new SolidColorBrush(Color.FromArgb(0x60, 0x80, 0x80, 0x80)),
+
             BoxShadow = BoxShadows.Parse("0 8 32 0 #80000000"),
         };
         frame[!Border.BackgroundProperty] = w[!TemplatedControl.BackgroundProperty];
+        frame.Bind(Border.BorderBrushProperty, frame.GetResourceObservable("Brush.Seam"));
 
         Control top = frame;
         if (modal)
@@ -331,8 +339,7 @@ public sealed class WindowHost : Panel
         var frame = FrameOf(w);
         if (frame is null) return;
 
-        bool fill = w.WindowState is AvWindowState.Maximized or AvWindowState.FullScreen
-                    || area.Width < 700;   // a phone: every window takes the screen
+        bool fill = w.WindowState is AvWindowState.Maximized or AvWindowState.FullScreen;
         double maxW = Math.Max(200, area.Width - 24), maxH = Math.Max(200, area.Height - 24);
         if (fill)
         {
@@ -346,7 +353,7 @@ public sealed class WindowHost : Panel
         double width = double.IsNaN(w.Width) || w.SizeToContent is SizeToContent.Width or SizeToContent.WidthAndHeight
             ? double.NaN : Math.Min(w.Width, maxW);
         double height = double.IsNaN(w.Height) || w.SizeToContent is SizeToContent.Height or SizeToContent.WidthAndHeight
-            ? double.NaN : Math.Min(w.Height + 40, maxH);
+            ? double.NaN : Math.Min(w.Height + 32, maxH);
         frame.Width = width;
         frame.Height = height;
         frame.MaxWidth = maxW;

@@ -51,12 +51,12 @@ public abstract class NotaWindow : Window
         // the window Title) — no extended client area, no custom bar. Matches MainWindow's
         // Linux treatment. macOS/Windows get the frameless modern chrome with a slim custom
         // title bar (extend the client area, a 32px raised band), so every window reads as one family.
-        if (!OperatingSystem.IsLinux() && ownTitleBarHeight > 0)
+        if (!HostDrawsFrame && ownTitleBarHeight > 0)
         {
             ExtendClientAreaToDecorationsHint = true;
             ExtendClientAreaTitleBarHeightHint = ownTitleBarHeight;
         }
-        else if (!OperatingSystem.IsLinux())
+        else if (!HostDrawsFrame)
         {
             ExtendClientAreaToDecorationsHint = true;
             ExtendClientAreaTitleBarHeightHint = 32;
@@ -106,7 +106,7 @@ public abstract class NotaWindow : Window
 
         dock.Children.Add(bodyLayer);   // fills the remaining space
         // Everything, title bar included, sits under the interface scale (spec 027).
-        double titleBar = OperatingSystem.IsLinux() ? 0 : ownTitleBarHeight > 0 ? ownTitleBarHeight : 32;
+        double titleBar = HostDrawsFrame ? 0 : ownTitleBarHeight > 0 ? ownTitleBarHeight : 32;
         base.Content = NotaUiScale.Wrap(this, dock, titleBar);
     }
 
@@ -144,7 +144,11 @@ public abstract class NotaWindow : Window
 
     /// <summary>True when the OS draws the window frame and title (Linux): a subclass's own
     /// title bar then needs no inset for window buttons and does not drag the window.</summary>
-    protected static bool NativeFrame => OperatingSystem.IsLinux();
+    protected static bool NativeFrame => HostDrawsFrame;
+
+    /// <summary>The frame and title are drawn by someone else: the OS on Linux, the
+    /// WindowHost on Android (Android/WindowShim.cs).</summary>
+    internal static bool HostDrawsFrame => OperatingSystem.IsLinux() || OperatingSystem.IsAndroid();
 
     /// <summary>Padding for a subclass's own title row at interface scale <paramref name="s"/>:
     /// room for the OS window buttons — the macOS traffic lights (left), the Windows caption
