@@ -113,11 +113,11 @@ public partial class MainWindow
     // focused text field (or its NumericUpDown, spinners included) now drops its focus; a press
     // on another focusable control still focuses that control as usual. Tunnel +
     // handledEventsToo so canvases that consume the press can't keep it from running.
-    internal static void ReleaseTextFocusOnOutsidePress(TopLevel top)
+    internal static void ReleaseTextFocusOnOutsidePress(InputElement top)
     {
         top.AddHandler(PointerPressedEvent, (_, e) =>
         {
-            if (top.FocusManager?.GetFocusedElement() is not Visual focused) return;
+            if (TopLevel.GetTopLevel(top)?.FocusManager?.GetFocusedElement() is not Visual focused) return;
             // The in-window menu bar keeps the keyboard the same way once an arrow key or Alt
             // reached it: a click on a clip left the arrows moving through the menu (#548).
             Visual? field = focused.FindAncestorOfType<TextBox>(includeSelf: true)
@@ -125,7 +125,7 @@ public partial class MainWindow
             if (field is null) return;
             field = field.FindAncestorOfType<NumericUpDown>() ?? field;
             if (e.Source is Visual src && src.GetSelfAndVisualAncestors().Contains(field)) return;
-            top.FocusManager.Focus(null);
+            TopLevel.GetTopLevel(top)?.FocusManager?.Focus(null);
         }, RoutingStrategies.Tunnel, handledEventsToo: true);
     }
 

@@ -286,9 +286,19 @@ public partial class App : Avalonia.Application
     private void StartSingleView(ISingleViewApplicationLifetime single, ILogSink log)
     {
         var host = new WindowHost();
+        host.Bind(Panel.BackgroundProperty, host.GetResourceObservable("Brush.BgApp"));
         single.MainView = host;
+        AppDomain.CurrentDomain.UnhandledException += (_, e) => Console.WriteLine("Nota unhandled: " + e.ExceptionObject);
+        Avalonia.Threading.Dispatcher.UIThread.UnhandledException += (_, e) =>
+        {
+            Console.WriteLine("Nota UI exception: " + e.Exception);
+            log.Error("UI exception", e.Exception);
+            e.Handled = true;   // keep the app up; the log has it
+        };
         Avalonia.Threading.Dispatcher.UIThread.Post(() =>
         {
+          try
+          {
             var recovery = Services.GetRequiredService<IRecoveryStore>();
             var pending = recovery.PendingRecovery();
             recovery.BeginSession();
@@ -305,6 +315,15 @@ public partial class App : Avalonia.Application
             };
             var main = new MainWindow { DataContext = vm, PendingRecovery = pending };
             main.Show();
+          }
+          catch (Exception e)
+          {
+              // Logcat (tag DOTNET) shows it too: there is no console to read on a phone.
+              Console.WriteLine("Nota startup failed: " + e);
+              log.Error("Startup failed", e);
+              host.Children.Add(new TextBlock { Text = "Nota couldn't start:\n" + e, Margin = new Avalonia.Thickness(24),
+                  TextWrapping = Avalonia.Media.TextWrapping.Wrap, Foreground = Avalonia.Media.Brushes.White });
+          }
         }, Avalonia.Threading.DispatcherPriority.Background);
     }
 #endif
