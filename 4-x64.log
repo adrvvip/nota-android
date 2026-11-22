@@ -1,0 +1,491 @@
+-- The C compiler identification is Clang 21.0.0
+-- The CXX compiler identification is Clang 21.0.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/lib/android/sdk/ndk/30.0.16248370/toolchains/llvm/prebuilt/linux-x86_64/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/lib/android/sdk/ndk/30.0.16248370/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Using the multi-header code from /home/runner/work/nota-android/nota-android/.cpm-cache/nlohmann_json/6f46/include/
+-- CPM: Adding package nlohmann_json@3.12.0 (3.12.0 at /home/runner/work/nota-android/nota-android/.cpm-cache/nlohmann_json/6f46)
+-- CPM: Adding package dr_libs@ ( at /home/runner/work/nota-android/nota-android/.cpm-cache/dr_libs/3762)
+-- CPM: Adding package miniaudio@0.11.25 (0.11.25 at /home/runner/work/nota-android/nota-android/.cpm-cache/miniaudio/007a)
+-- CPM: Adding package signalsmith_linear@ ( at /home/runner/work/nota-android/nota-android/.cpm-cache/signalsmith_linear/0abf)
+-- CPM: Adding package pffft@1.3.0 (1.3.0 at /home/runner/work/nota-android/nota-android/.cpm-cache/pffft/210f)
+-- CPM: Adding package signalsmith_stretch@ ( at /home/runner/work/nota-android/nota-android/.cpm-cache/signalsmith_stretch/ea8b)
+-- CPM: Adding package hiir@1.50 (1.50 at /home/runner/work/nota-android/nota-android/.cpm-cache/hiir/46bd)
+-- Performing Test Iconv_IS_BUILT_IN
+-- Performing Test Iconv_IS_BUILT_IN - Failed
+-- Could NOT find Iconv (missing: Iconv_LIBRARY) 
+-- Performing Test HAVE_MBSTATE
+-- Performing Test HAVE_MBSTATE - Success
+-- Performing Test DODEFINE_EXTENSIONS
+-- Performing Test DODEFINE_EXTENSIONS - Success
+-- Looking for byteswap.h
+-- Looking for byteswap.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
+-- Looking for arm_neon.h
+-- Looking for arm_neon.h - not found
+-- Looking for x86intrin.h
+-- Looking for x86intrin.h - found
+-- Looking for fseeko
+-- Looking for fseeko - found
+-- Performing Test HAVE_BSWAP16
+-- Performing Test HAVE_BSWAP16 - Success
+-- Performing Test HAVE_BSWAP32
+-- Performing Test HAVE_BSWAP32 - Success
+-- Performing Test HAVE_LANGINFO_CODESET
+-- Performing Test HAVE_LANGINFO_CODESET - Success
+-- Performing Test HAVE_WERROR_FLAG
+-- Performing Test HAVE_WERROR_FLAG - Success
+-- Performing Test HAVE_DECL_AFTER_STMT_FLAG
+-- Performing Test HAVE_DECL_AFTER_STMT_FLAG - Success
+-- Performing Test HAVE_STACKREALIGN_FLAG
+-- Performing Test HAVE_STACKREALIGN_FLAG - Success
+-- Performing Test HAVE_WEFFCXX_FLAG
+-- Performing Test HAVE_WEFFCXX_FLAG - Success
+-- Performing Test HAVE_STACK_PROTECTOR_FLAG
+-- Performing Test HAVE_STACK_PROTECTOR_FLAG - Success
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Check if compiler accepts -pthread
+-- Check if compiler accepts -pthread - yes
+-- Found Threads: TRUE
+-- Looking for cpuid.h
+-- Looking for cpuid.h - found
+-- Looking for sys/param.h
+-- Looking for sys/param.h - found
+-- Looking for lround
+-- Looking for lround - found
+-- Check CPU architecture is x64
+-- Check CPU architecture is x64 - yes
+-- Performing Test HAVE_ASSOC_MATH
+-- Performing Test HAVE_ASSOC_MATH - Success
+-- Looking for string.h
+-- Looking for string.h - found
+-- Failed to find Gettext libintl (missing: Intl_LIBRARY Intl_INCLUDE_DIR) 
+-- CPM: Adding package flac@1.5.0 (1.5.0 at /home/runner/work/nota-android/nota-android/.cpm-cache/flac/e108)
+-- CPM: Adding package rtmidi@ ( at /home/runner/work/nota-android/nota-android/.cpm-cache/rtmidi/3a55)
+-- CPM: Adding package lame@3.100 (3.100 at /home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e)
+-- Configuring done (3.0s)
+-- Generating done (0.1s)
+CMake Warning (unused-cli):
+  Manually-specified variables were not used by the project:
+
+    NOTA_BUILD_RENDER_PROBE
+
+
+-- Build files have been written to: /home/runner/work/nota-android/nota-android/build-ndk-x64
+[1/205] Building C object CMakeFiles/nota_pffft.dir/home/runner/work/nota-android/nota-android/.cpm-cache/pffft/210f/src/pffft_common.c.o
+[2/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/cpu.c.o
+[3/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/crc.c.o
+[4/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/bitmath.c.o
+[5/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/bitreader.c.o
+[6/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_sse2.c.o
+[7/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/fixed.c.o
+[8/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_ssse3.c.o
+[9/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/bitwriter.c.o
+[10/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/float.c.o
+[11/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_sse42.c.o
+[12/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_neon.c.o
+[13/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/format.c.o
+[14/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_sse2.c.o
+[15/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_avx2.c.o
+[16/205] Building CXX object CMakeFiles/nota_pluginhost.dir/pluginhost/android/PluginHostStub.cpp.o
+[17/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_sse41.c.o
+[18/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/memory.c.o
+[19/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_fma.c.o
+[20/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/md5.c.o
+[21/205] Building C object CMakeFiles/nota_pffft.dir/home/runner/work/nota-android/nota-android/.cpm-cache/pffft/210f/src/pffft.c.o
+[22/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/lpc.c.o
+[23/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_sse2.c.o
+[24/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/metadata_object.c.o
+[25/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_ssse3.c.o
+[26/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_avx2.c.o
+[27/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_framing.c.o
+[28/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/stream_decoder.c.o
+[29/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/window.c.o
+[30/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder.c.o
+[31/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/fft.c.o
+[32/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/gain_analysis.c.o
+[33/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_avx2.c.o
+[34/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/encoder.c.o
+[35/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/mpglib_interface.c.o
+[36/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/bitstream.c.o
+[37/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c.o
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:170:5: warning: using floating point absolute value function 'fabs' when argument is of integer type [-Wabsolute-value]
+  170 |     SET_OPTION(quant_comp, set->quant_comp, -1);
+      |     ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:36:16: note: expanded from macro 'SET_OPTION'
+   36 |     else if (!(fabs(lame_get_##opt(gfp) - def) > 0)) \
+      |                ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:170:5: note: use function 'abs' instead
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:36:16: note: expanded from macro 'SET_OPTION'
+   36 |     else if (!(fabs(lame_get_##opt(gfp) - def) > 0)) \
+      |                ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:171:5: warning: using floating point absolute value function 'fabs' when argument is of integer type [-Wabsolute-value]
+  171 |     SET_OPTION(quant_comp_short, set->quant_comp_s, -1);
+      |     ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:36:16: note: expanded from macro 'SET_OPTION'
+   36 |     else if (!(fabs(lame_get_##opt(gfp) - def) > 0)) \
+      |                ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:171:5: note: use function 'abs' instead
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:36:16: note: expanded from macro 'SET_OPTION'
+   36 |     else if (!(fabs(lame_get_##opt(gfp) - def) > 0)) \
+      |                ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:284:5: warning: using floating point absolute value function 'fabs' when argument is of integer type [-Wabsolute-value]
+  284 |     SET_OPTION(quant_comp, abr_switch_map[r].quant_comp, -1);
+      |     ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:36:16: note: expanded from macro 'SET_OPTION'
+   36 |     else if (!(fabs(lame_get_##opt(gfp) - def) > 0)) \
+      |                ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:284:5: note: use function 'abs' instead
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:36:16: note: expanded from macro 'SET_OPTION'
+   36 |     else if (!(fabs(lame_get_##opt(gfp) - def) > 0)) \
+      |                ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:285:5: warning: using floating point absolute value function 'fabs' when argument is of integer type [-Wabsolute-value]
+  285 |     SET_OPTION(quant_comp_short, abr_switch_map[r].quant_comp_s, -1);
+      |     ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:36:16: note: expanded from macro 'SET_OPTION'
+   36 |     else if (!(fabs(lame_get_##opt(gfp) - def) > 0)) \
+      |                ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:285:5: note: use function 'abs' instead
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/presets.c:36:16: note: expanded from macro 'SET_OPTION'
+   36 |     else if (!(fabs(lame_get_##opt(gfp) - def) > 0)) \
+      |                ^
+4 warnings generated.
+[38/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/newmdct.c.o
+[39/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c.o
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c:641:13: warning: using floating point absolute value function 'fabs' when argument is of integer type [-Wabsolute-value]
+  641 |         if (EQ(gfp->compression_ratio, 0))
+      |             ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:170:12: note: expanded from macro 'EQ'
+  170 | (fabs(a) > fabs(b)) \
+      |            ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c:641:13: note: use function 'abs' instead
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:170:12: note: expanded from macro 'EQ'
+  170 | (fabs(a) > fabs(b)) \
+      |            ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c:641:13: warning: using floating point absolute value function 'fabs' when argument is of integer type [-Wabsolute-value]
+  641 |         if (EQ(gfp->compression_ratio, 0))
+      |             ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:172:23: note: expanded from macro 'EQ'
+  172 |  : (fabs((a)-(b)) <= (fabs(b) * 1e-6f)))
+      |                       ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c:641:13: note: use function 'abs' instead
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:172:23: note: expanded from macro 'EQ'
+  172 |  : (fabs((a)-(b)) <= (fabs(b) * 1e-6f)))
+      |                       ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c:1606:13: warning: using floating point absolute value function 'fabs' when argument is of integer type [-Wabsolute-value]
+ 1606 |         if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
+      |             ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:177:20: note: expanded from macro 'NEQ'
+  177 | #define NEQ(a,b) (!EQ(a,b))
+      |                    ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:170:12: note: expanded from macro 'EQ'
+  170 | (fabs(a) > fabs(b)) \
+      |            ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c:1606:13: note: use function 'abs' instead
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:177:20: note: expanded from macro 'NEQ'
+  177 | #define NEQ(a,b) (!EQ(a,b))
+      |                    ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:170:12: note: expanded from macro 'EQ'
+  170 | (fabs(a) > fabs(b)) \
+      |            ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c:1606:13: warning: using floating point absolute value function 'fabs' when argument is of integer type [-Wabsolute-value]
+ 1606 |         if (NEQ(RadioGain, GAIN_NOT_ENOUGH_SAMPLES)) {
+      |             ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:177:20: note: expanded from macro 'NEQ'
+  177 | #define NEQ(a,b) (!EQ(a,b))
+      |                    ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:172:23: note: expanded from macro 'EQ'
+  172 |  : (fabs((a)-(b)) <= (fabs(b) * 1e-6f)))
+      |                       ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/lame.c:1606:13: note: use function 'abs' instead
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:177:20: note: expanded from macro 'NEQ'
+  177 | #define NEQ(a,b) (!EQ(a,b))
+      |                    ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/machine.h:172:23: note: expanded from macro 'EQ'
+  172 |  : (fabs((a)-(b)) <= (fabs(b) * 1e-6f)))
+      |                       ^
+4 warnings generated.
+[40/205] Building C object _deps/flac-build/src/libFLAC/CMakeFiles/FLAC.dir/metadata_iterators.c.o
+[41/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/reservoir.c.o
+[42/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/quantize.c.o
+[43/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/tables.c.o
+[44/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/quantize_pvt.c.o
+[45/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/psymodel.c.o
+[46/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/version.c.o
+[47/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/id3tag.c.o
+[48/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c.o
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:263:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  263 |     SHIFT_IN_BITS_VALUE(buffer[0], 8u, 0xffu);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:265:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  265 |     SHIFT_IN_BITS_VALUE(buffer[1], 3u, 7);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:266:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  266 |     SHIFT_IN_BITS_VALUE(buffer[1], 1u, (cfg->samplerate_out < 16000) ? 0 : 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:267:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  267 |     SHIFT_IN_BITS_VALUE(buffer[1], 1u, cfg->version);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:268:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  268 |     SHIFT_IN_BITS_VALUE(buffer[1], 2u, 4 - 3);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:269:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  269 |     SHIFT_IN_BITS_VALUE(buffer[1], 1u, (!cfg->error_protection) ? 1 : 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:271:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  271 |     SHIFT_IN_BITS_VALUE(buffer[2], 4u, eov->bitrate_index);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:272:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  272 |     SHIFT_IN_BITS_VALUE(buffer[2], 2u, cfg->samplerate_index);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:273:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  273 |     SHIFT_IN_BITS_VALUE(buffer[2], 1u, 0);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:274:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  274 |     SHIFT_IN_BITS_VALUE(buffer[2], 1u, cfg->extension);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:276:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  276 |     SHIFT_IN_BITS_VALUE(buffer[3], 2u, cfg->mode);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:277:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  277 |     SHIFT_IN_BITS_VALUE(buffer[3], 2u, eov->mode_ext);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:278:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  278 |     SHIFT_IN_BITS_VALUE(buffer[3], 1u, cfg->copyright);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:279:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  279 |     SHIFT_IN_BITS_VALUE(buffer[3], 1u, cfg->original);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:280:5: warning: shifting a negative signed value is undefined [-Wshift-negative-value]
+  280 |     SHIFT_IN_BITS_VALUE(buffer[3], 2u, cfg->emphasis);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:254:68: note: expanded from macro 'SHIFT_IN_BITS_VALUE'
+  254 | #define SHIFT_IN_BITS_VALUE(x,n,v) ( x = (x << (n)) | ( (v) & ~(-1 << (n)) ) )
+      |                                                                 ~~ ^
+/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/VbrTag.c:430:23: warning: comparison of array 'pTagData->toc' not equal to a null pointer is always true [-Wtautological-pointer-compare]
+  430 |         if (pTagData->toc != NULL) {
+      |             ~~~~~~~~~~^~~    ~~~~
+16 warnings generated.
+[49/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/mpglib/common.c.o
+[50/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/set_get.c.o
+[51/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/util.c.o
+[52/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/mpglib/dct64_i386.c.o
+[53/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/takehiro.c.o
+[54/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/mpglib/decode_i386.c.o
+[55/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/mpglib/layer1.c.o
+[56/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/mpglib/tabinit.c.o
+[57/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/mpglib/interface.c.o
+[58/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/mpglib/layer2.c.o
+[59/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/libmp3lame/vbrquantize.c.o
+[60/205] Building C object lame-build/CMakeFiles/lame.dir/home/runner/work/nota-android/nota-android/.cpm-cache/lame/2e0e/mpglib/layer3.c.o
+[61/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_core.cpp.o
+[62/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_session.cpp.o
+[63/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_automation.cpp.o
+[64/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_modulation.cpp.o
+[65/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_device.cpp.o
+[66/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_presets.cpp.o
+[67/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_track.cpp.o
+/home/runner/work/nota-android/nota-android/src/native/nota.engine/src/abi/nota_engine_track.cpp:571:42: warning: 'makeSel' has C-linkage specified, but returns user-defined type 'std::vector<std::pair<int32_t, int32_t>>' (aka 'vector<pair<int, int>>') which is incompatible with C [-Wreturn-type-c-linkage]
+  571 | std::vector<std::pair<int32_t, int32_t>> makeSel(const int32_t* track_ids, const int32_t* clip_indices, int32_t n) {
+      |                                          ^
+1 warning generated.
+[68/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_encoder.cpp.o
+[69/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_import.cpp.o
+[70/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_rack.cpp.o
+[71/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_audition.cpp.o
+[72/205] Building CXX object CMakeFiles/nota_engine.dir/src/abi/nota_engine_audio.cpp.o
+[73/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Modulation.cpp.o
+[74/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Presets.cpp.o
+[75/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Automation.cpp.o
+/home/runner/work/nota-android/nota-android/src/native/nota.engine/src/engine/Engine_Automation.cpp:352:13: warning: enumeration value 'Tempo' not handled in switch [-Wswitch]
+  352 |     switch (static_cast<AutomationTarget>(target)) {
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+[76/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Session.cpp.o
+[77/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine.cpp.o
+[78/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Rack.cpp.o
+[79/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Takes.cpp.o
+[80/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Recording.cpp.o
+[81/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_TakeRetry.cpp.o
+[82/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Devices.cpp.o
+[83/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/AudioThreadPool.cpp.o
+[84/205] Building CXX object CMakeFiles/nota_engine.dir/src/media/TempoDetect.cpp.o
+[85/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Audition.cpp.o
+[86/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Tracks.cpp.o
+[87/205] Building CXX object CMakeFiles/nota_engine.dir/src/media/WarpStream.cpp.o
+[88/205] Building CXX object CMakeFiles/nota_engine.dir/src/media/SampleAnalysis.cpp.o
+[89/205] Building CXX object CMakeFiles/nota_engine.dir/src/media/AudioImport.cpp.o
+[90/205] Building CXX object CMakeFiles/nota_engine.dir/src/media/SampleBuffer.cpp.o
+[91/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/AudioBackendFactory.cpp.o
+[92/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/asio/AsioSampleFormat.cpp.o
+[93/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/MpeInput.cpp.o
+[94/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/NotaConfigFile.cpp.o
+[95/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/asio/AsioSession.cpp.o
+[96/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/Device.cpp.o
+[97/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/asio/FakeAsioDriver.cpp.o
+[98/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/MidiDevice.cpp.o
+[99/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/Instrument.cpp.o
+[100/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_Render.cpp.o
+[101/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/racks/RackDevice.cpp.o
+[102/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/ConfigJson.cpp.o
+[103/205] Building CXX object CMakeFiles/nota_engine.dir/src/media/AudioFile.cpp.o
+[104/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/BuiltinDevices.cpp.o
+[105/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/DeviceFactory.cpp.o
+[106/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/racks/RackInstrument.cpp.o
+[107/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/racks/DrumRack.cpp.o
+[108/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/midi_fx/Arpeggiator.cpp.o
+[109/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/midi_fx/MidiChord.cpp.o
+[110/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/racks/MidiRack.cpp.o
+[111/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/midi_fx/MidiScale.cpp.o
+[112/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/midi_fx/MidiNoteLength.cpp.o
+[113/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/midi_fx/MidiVelocity.cpp.o
+[114/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/racks/RackCore.cpp.o
+[115/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/midi_fx/MidiRandom.cpp.o
+[116/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/ArticulationSchedule.cpp.o
+[117/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/SessionPlayer.cpp.o
+[118/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Track.cpp.o
+[119/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Transport.cpp.o
+[120/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/ArticulationTable.cpp.o
+[121/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Graph.cpp.o
+[122/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Modulation.cpp.o
+[123/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Automation.cpp.o
+[124/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/MidiClip.cpp.o
+[125/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/MidiController.cpp.o
+[126/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/NoteExpression.cpp.o
+[127/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/SessionPass.cpp.o
+[128/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/MidiSurface.cpp.o
+[129/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Eq3.cpp.o
+[130/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Compressor.cpp.o
+[131/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/DynamicEq.cpp.o
+[132/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/AutoFilter.cpp.o
+[133/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Eq.cpp.o
+[134/205] Building CXX object CMakeFiles/nota_engine.dir/src/engine/Engine_SessionPass.cpp.o
+[135/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Ceiling.cpp.o
+[136/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Prism.cpp.o
+[137/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/AutoGain.cpp.o
+[138/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Reverb.cpp.o
+[139/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Delay.cpp.o
+[140/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/ChamberIrSynth.cpp.o
+[141/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Strata.cpp.o
+[142/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/BeatRepeat.cpp.o
+[143/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Flanger.cpp.o
+[144/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Chorus.cpp.o
+[145/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Phaser.cpp.o
+[146/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/AutoPan.cpp.o
+[147/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Shutter.cpp.o
+[148/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Vintage.cpp.o
+[149/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Utility.cpp.o
+[150/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Lens.cpp.o
+[151/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Chamber.cpp.o
+[152/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Amp.cpp.o
+[153/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/Synth.cpp.o
+[154/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Vocoder.cpp.o
+[155/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Forge.cpp.o
+[156/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/AutoShift.cpp.o
+[157/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/effects/Crush.cpp.o
+[158/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/BassSynth.cpp.o
+[159/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/Monolith.cpp.o
+[160/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/VoltSynth.cpp.o
+[161/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/OperatorSynth.cpp.o
+[162/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/Consort.cpp.o
+[163/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/Pentad.cpp.o
+[164/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/FluxSynth.cpp.o
+[165/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/AuroraTable.cpp.o
+[166/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/PendulumSynth.cpp.o
+[167/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/PhysicalSynth.cpp.o
+[168/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/WavetableSynth.cpp.o
+[169/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/Keys.cpp.o
+[170/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/GrainSynth.cpp.o
+[171/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/Sampler.cpp.o
+[172/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/RhythmVoiceDsp.cpp.o
+[173/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/RhythmMachine.cpp.o
+[174/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/TwinMod.cpp.o
+[175/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/TwinSeq.cpp.o
+[176/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/MosaicProgram.cpp.o
+[177/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/Mosaic.cpp.o
+[178/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/core/Parameter.cpp.o
+[179/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/core/SilenceDetector.cpp.o
+[180/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/SvfFilter.cpp.o
+[181/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/BiquadCascade.cpp.o
+[182/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/TwinVoice.cpp.o
+[183/205] Building CXX object CMakeFiles/nota_engine.dir/src/devices/instruments/Twin.cpp.o
+[184/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/LadderFilter.cpp.o
+[185/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/Oscillator.cpp.o
+[186/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/Envelope.cpp.o
+[187/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/DelayLine.cpp.o
+[188/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/TruePeakMeter.cpp.o
+[189/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/Oversampler.cpp.o
+[190/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/poly/SynthVoice.cpp.o
+[191/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/SpectrumAnalyzer.cpp.o
+[192/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/CompensationDelay.cpp.o
+[193/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/poly/PolyVoiceManager.cpp.o
+[194/205] Building CXX object CMakeFiles/nota_engine.dir/src/dsp/primitives/Convolution.cpp.o
+[195/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/desktop/GamepadInput_stub.cpp.o
+[196/205] Linking C static library libnota_pffft.a
+[197/205] Linking CXX static library libnota_pluginhost.a
+[198/205] Linking C static library _deps/flac-build/src/libFLAC/libFLAC.a
+[199/205] Linking C static library lame-build/liblame.a
+[200/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/desktop/MiniaudioBackend.cpp.o
+[201/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/desktop/MiniaudioInput.cpp.o
+[202/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/desktop/AudioConfig_miniaudio.cpp.o
+[203/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/android/Midi_android.cpp.o
+[204/205] Building CXX object CMakeFiles/nota_engine.dir/src/audio_io/desktop/miniaudio_impl.cpp.o
+[205/205] Linking CXX shared library libnota_engine.so
+  Determining projects to restore...
+  Restored /home/runner/work/nota-android/nota-android/src/managed/Nota.App/Nota.App.csproj (in 111 ms).
+  6 of 7 projects are up-to-date for restore.

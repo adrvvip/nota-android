@@ -1,0 +1,3 @@
+48:-- Performing Test HAVE_WERROR_FLAG
+49:-- Performing Test HAVE_WERROR_FLAG - Success
+261:  269 |     SHIFT_IN_BITS_VALUE(buffer[1], 1u, (!cfg->error_protection) ? 1 : 0);

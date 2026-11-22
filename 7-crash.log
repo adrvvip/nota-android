@@ -1,0 +1,103 @@
+11-22 19:39:11.570   520  2739 E ActivityManager: ANR in com.google.android.apps.nexuslauncher (com.google.android.apps.nexuslauncher/.NexusLauncherActivity)
+11-22 19:39:11.570   520  2739 E ActivityManager: PID: 1105
+11-22 19:39:11.570   520  2739 E ActivityManager: Reason: Input dispatching timed out (Application does not have a focused window)
+11-22 19:39:11.570   520  2739 E ActivityManager: Parent: com.google.android.apps.nexuslauncher/.NexusLauncherActivity
+11-22 19:39:11.570   520  2739 E ActivityManager: ErrorId: 7ebf045b-2f33-477d-91f6-59f7b5bba2b1
+11-22 19:39:11.570   520  2739 E ActivityManager: Frozen: false
+11-22 19:39:11.570   520  2739 E ActivityManager: Load: 10.59 / 2.32 / 0.76
+11-22 19:39:11.570   520  2739 E ActivityManager: ----- Output from /proc/pressure/memory -----
+11-22 19:39:11.570   520  2739 E ActivityManager: some avg10=8.52 avg60=2.34 avg300=0.52 total=1723500
+11-22 19:39:11.570   520  2739 E ActivityManager: full avg10=1.87 avg60=0.52 avg300=0.12 total=448181
+11-22 19:39:11.570   520  2739 E ActivityManager: ----- End output from /proc/pressure/memory -----
+11-22 19:39:11.570   520  2739 E ActivityManager: ----- Output from /proc/pressure/cpu -----
+11-22 19:39:11.570   520  2739 E ActivityManager: some avg10=66.97 avg60=26.10 avg300=6.54 total=20493120
+--
+11-22 19:39:15.964  3989  3989 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-22 19:39:15.971  3989  3989 I AndroidRuntime: Using default boot image
+11-22 19:39:15.971  3989  3989 I AndroidRuntime: Leaving lock profiling enabled
+11-22 19:39:15.973  3989  3989 I app_process: Core platform API reporting enabled, enforcing=false
+11-22 19:39:15.976  3989  3989 I app_process: Using CollectorTypeCC GC.
+11-22 19:39:15.982  1456  1456 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-22 19:39:15.982  1456  1456 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.chimera.container.moduleinstall.ModuleInstallService.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+11-22 19:39:15.983   520   908 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-22 19:39:15.983   520   908 D PackageManager: Clear ephemeral installer activity
+11-22 19:39:15.987  1456  2878 I NearbyFastPair: FastPairInitIntentOperation: check the Footprints sync tasks. [CONTEXT service_id=265 ]
+11-22 19:39:15.988  1456  2878 I NearbyFastPair: TaskSchedulerUtils cancelTask TAG_FOOTPRINTS_PERIODIC_SCHEDULE success. [CONTEXT service_id=265 ]
+11-22 19:39:15.988  1456  2878 I NearbyFastPair: TSS cancel footprints recon sync [CONTEXT service_id=265 ]
+11-22 19:39:15.989  1456  2878 I NearbyFastPair: TaskSchedulerUtils cancelTask TAG_FOOTPRINTS_RECON_SYNC_SCHEDULE success. [CONTEXT service_id=265 ]
+11-22 19:39:15.991   520   911 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10119; state: DISABLED
+11-22 19:39:15.991  1456  3321 I NearbyDiscovery: Trigger rescan contextual cards [CONTEXT service_id=265 ]
+--
+11-22 19:39:16.178  3989  3989 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
+11-22 19:39:16.179   520   906 D PackageManager: Clear ephemeral installer activity
+11-22 19:39:16.183   520   906 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-22 19:39:16.183   520   906 D PackageManager: Clear ephemeral installer activity
+11-22 19:39:16.183   520   906 D PackageManager: Instant App installer not found with android.intent.action.INSTALL_INSTANT_APP_PACKAGE
+11-22 19:39:16.183   520   906 D PackageManager: Clear ephemeral installer activity
+11-22 19:39:16.186  3989  3989 W Monkey  : args: [-p, app.nota.android, -c, android.intent.category.LAUNCHER, 1]
+11-22 19:39:16.187  3989  3989 W Monkey  :  arg: "-p"
+11-22 19:39:16.187  3989  3989 W Monkey  :  arg: "app.nota.android"
+11-22 19:39:16.187  3989  3989 W Monkey  :  arg: "-c"
+11-22 19:39:16.168  3989  3989 W main    : type=1400 audit(0.0:16): avc:  denied  { read } for  name="u:object_r:build_attestation_prop:s0" dev="tmpfs" ino=86 scontext=u:r:shell:s0 tcontext=u:object_r:build_attestation_prop:s0 tclass=file permissive=0
+11-22 19:39:16.187  3989  3989 W Monkey  :  arg: "android.intent.category.LAUNCHER"
+11-22 19:39:16.187  3989  3989 W Monkey  :  arg: "1"
+--
+11-22 19:39:16.772  3989  3989 I AndroidRuntime: VM exiting with result code 0.
+11-22 19:39:16.777  1412  1412 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.pseudonymous.service.START pkg=com.google.android.gms }
+11-22 19:39:16.788  1412  1412 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.pseudonymous.service.START pkg=com.google.android.gms }
+11-22 19:39:16.827  3860  3953 D CompatibilityChangeReporter: Compat change id reported: 263076149; UID 10187; state: ENABLED
+11-22 19:39:16.835  3860  4050 I RkpdPeriodicProvisioner: Waking up; checking provisioning state.
+11-22 19:39:16.864  1560  4019 W putmethod.latin: Accessing hidden method Lcom/android/org/conscrypt/ConscryptEngineSocket;->setUseSessionTickets(Z)V (max-target-q,core-platform-api, reflection, denied)
+11-22 19:39:16.864  1560  4019 W putmethod.latin: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setUseSessionTickets(Z)V (max-target-q,core-platform-api, reflection, denied)
+11-22 19:39:16.864  1560  4019 W putmethod.latin: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setUseSessionTickets(Z)V (max-target-q, reflection, denied)
+11-22 19:39:16.864  1560  4019 W putmethod.latin: Accessing hidden method Lcom/android/org/conscrypt/ConscryptEngineSocket;->setHostname(Ljava/lang/String;)V (max-target-q,core-platform-api, reflection, denied)
+11-22 19:39:16.864  1560  4019 W putmethod.latin: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setHostname(Ljava/lang/String;)V (max-target-q,core-platform-api, reflection, denied)
+11-22 19:39:16.864  1560  4019 W putmethod.latin: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setHostname(Ljava/lang/String;)V (max-target-q, reflection, denied)
+11-22 19:39:16.864  1560  4019 W putmethod.latin: Accessing hidden method Lcom/android/org/conscrypt/OpenSSLSocketImpl;->setAlpnProtocols([B)V (max-target-q,core-platform-api, reflection, denied)
+11-22 19:39:16.864  1560  4019 W putmethod.latin: Accessing hidden method Lcom/android/org/conscrypt/AbstractConscryptSocket;->setAlpnProtocols([B)V (max-target-q, reflection, denied)
+--
+11-22 19:39:19.463  4035  4035 D DOTNET  : AndroidCryptoNative_InitLibraryOnLoad: jint AndroidCryptoNative_InitLibraryOnLoad(JavaVM *, void *) in /__w/1/s/src/runtime/src/native/libs/System.Security.Cryptography.Native.Android/pal_jni.c
+11-22 19:39:19.463  4035  4035 D DOTNET  : GetOptionalClassGRef: optional class com/android/org/conscrypt/OpenSSLEngineImpl was not found
+11-22 19:39:19.468   520   907 W PackageManager: Cannot suspend package "com.google.android.dialer": is the default dialer
+11-22 19:39:19.468   520   907 W PackageManager: Cannot suspend package "com.google.android.packageinstaller": required for package installation
+11-22 19:39:19.469   520   907 W PackageManager: Cannot suspend package "com.google.android.apps.nexuslauncher": contains the active launcher
+11-22 19:39:19.488  3022  4126 I DialerTaskExecutor: com.android.voicemail.impl.scheduling.TaskExecutor$WorkerThreadHandler.handleMessage:221 executing task com.android.voicemail.impl.ActivationTask@9de9e9e [CONTEXT enable_persistent_logger=true ]
+11-22 19:39:19.490  3022  4126 I DialerPreOMigrationHandler: com.android.voicemail.impl.PreOMigrationHandler.migrate:79 migrating ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, 1, UserHandle{0} [CONTEXT enable_persistent_logger=true ]
+11-22 19:39:19.490  3022  4126 I DialerPreOMigrationHandler: com.android.voicemail.impl.PreOMigrationHandler.migrateSettings:87 migrating settings [CONTEXT enable_persistent_logger=true ]
+11-22 19:39:19.497  3022  4126 I DialerOmtpVvmCarrierConfigHelper: com.android.voicemail.impl.OmtpVvmCarrierConfigHelper.isCarrierAppInstalled:637 carrier app not installed in this device [CONTEXT ratelimit_period="1 MINUTES" ]
+11-22 19:39:19.497  3022  4126 I DialerVoicemailStatus: com.android.voicemail.impl.VoicemailStatus$Editor.apply:112 enter
+11-22 19:39:19.499  3022  4126 I DialerVoicemailStatusDataServiceImpl: com.android.dialer.voicemailstatus.dataservice.impl.VoicemailStatusDataServiceImpl.insertOrUpdateVoicemailStatus:196 enter
+11-22 19:39:19.499  3022  3169 I DialerVoicemailStatusDataServiceImpl: com.android.dialer.voicemailstatus.dataservice.impl.VoicemailStatusDataServiceImpl.lambda$insertOrUpdateVoicemailStatus$5:220 insert new status
+11-22 19:39:19.503  3022  3022 I DialerLogcatLoggingBindings: com.android.dialer.logging.logcat.LogcatLoggingBindings.logImpression:41 Impression: VVM_ACTIVATION_STARTED
+11-22 19:39:19.505  1631  1631 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.googlequicksearchbox.
+--
+11-22 19:39:24.035  4035  4035 I DOTNET  : Nota fit: view 915x412 pad 136,74,0,63 -> 0.5
+11-22 19:39:24.036   134   134 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-22 19:39:24.040  4035  4336 I Gralloc4: mapper 4.x is not supported
+11-22 19:39:24.051  4035  4035 I DOTNET  : Nota fit: view 915x412 pad 51.80952380952381,28.19047619047619,0,24 -> 0.6
+11-22 19:39:24.062  2252  2304 I .android.as.oss: Background concurrent copying GC freed 32786(1567KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 2688KB/5377KB, paused 42us,10us total 114.472ms
+11-22 19:39:24.084   837  1028 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+11-22 19:39:24.086  1412  1490 W ChimeraUtils: Module com.google.android.gms.nearby_en missing resource null(0)
+11-22 19:39:24.087   837  1028 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='android.permission.BIND_CALL_STREAMING_SERVICE', mQueryFlags=0, mMetaData=[]}
+11-22 19:39:24.087   837  1028 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+11-22 19:39:24.090   837  1028 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+11-22 19:39:24.101   520   905 W JobScheduler: Job didn't exist in JobStore: 6c7736b #u0a132/-17 com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService
+11-22 19:39:24.133  1560  1560 I JobSchedulerImpl: JobSchedulerImpl$TaskRunnerJobService.onStartJob():204 onStartJob(): ContentDownload.
+11-22 19:39:24.134  1560  1626 I ContentDownloadTask: ContentDownloadTask.downloadAndCacheImages():167 Starting content download task
+11-22 19:39:24.260  1968  1991 I d.process.media: Background concurrent copying GC freed 16940(880KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 2211KB/4423KB, paused 39us,6us total 344.577ms
+11-22 19:39:24.329  1412  3385 W .gms.persistent: Long monitor contention with owner netscheduler-queue-handler (3476) at void bytb.o(int)(:com.google.android.gms@231818047@23.18.18 (190800-535401451):4) waiters=0 in void bytb.u(byps, int) for 578ms
+11-22 19:39:24.348  4035  4054 I OpenGLRenderer: Davey! duration=4687ms; Flags=1, FrameTimelineVsyncId=8822, IntendedVsync=67491771195, Vsync=71658437695, InputEventId=0, HandleInputStart=71666949995, AnimationStart=71666950276, PerformTraversalsStart=71667010538, DrawStart=72078163302, FrameDeadline=67508437861, FrameInterval=71666843737, FrameStartTime=16666666, SyncQueued=72090110533, SyncStart=72090308741, IssueDrawCommandsStart=72090756006, SwapBuffers=72091914756, FrameCompleted=72179873809, DequeueBufferDuration=899958, QueueBufferDuration=534505, GpuCompleted=72178920682, SwapBuffersCompleted=72179873809, DisplayPresentTime=0, CommandSubmissionCompleted=72091914756, 
+--
+11-22 19:39:40.745  4035  4035 I DOTNET  : Nota fit: view 914x411 pad 19.736961451247165,0,0,0 -> 0.69
+11-22 19:39:40.754  2252  2726 I HttpGrpcBindableService: Downloading requested for URL 'https://gstatic.com/matchmaker/tclib_models/actions/v104/en-us/superpacks_manifest.zip'
+11-22 19:39:40.759  1631  2194 I SP.AiAi : Scheduling job with delay of 0s for {W:b:I:l, bg}, 1 candidates
+11-22 19:39:40.772  4035  4336 D EGL_emulation: app_time_stats: avg=8218.89ms min=335.73ms max=16102.06ms count=2
+11-22 19:39:40.800  2252  2726 I HttpGrpcBindableService: Responding with header information for URL 'https://gstatic.com/matchmaker/tclib_models/actions/v104/en-us/superpacks_manifest.zip'
+11-22 19:39:40.817  2252  3845 I HttpGrpcBindableService: [pfd-write] DOWNLOAD COMPLETE: Downloaded 408 bytes from URL [https://gstatic.com/matchmaker/tclib_models/actions/v104/en-us/superpacks_manifest.zip].
+11-22 19:39:40.818  1631  2660 I AstreaHttpConnection: Started download from url='https://gstatic.com/matchmaker/tclib_models/actions/v104/en-us/superpacks_manifest.zip'
+11-22 19:39:40.830  1631  2660 I AstreaHttpConnection: Download completed for url [https://gstatic.com/matchmaker/tclib_models/actions/v104/en-us/superpacks_manifest.zip].
+11-22 19:39:40.844   520   612 D ActivityManager: freezing 1318 com.google.android.cellbroadcastreceiver
+11-22 19:39:40.947  2252  2726 I HttpGrpcBindableService: Downloading requested for URL 'https://gstatic.com/matchmaker/tclib_models/langid/v1/superpacks_manifest.zip'
+11-22 19:39:40.965  2252  2726 I HttpGrpcBindableService: Responding with header information for URL 'https://gstatic.com/matchmaker/tclib_models/langid/v1/superpacks_manifest.zip'
+11-22 19:39:40.965  2252  3845 I HttpGrpcBindableService: [pfd-write] DOWNLOAD COMPLETE: Downloaded 399 bytes from URL [https://gstatic.com/matchmaker/tclib_models/langid/v1/superpacks_manifest.zip].
+11-22 19:39:40.968  1631  2660 I AstreaHttpConnection: Started download from url='https://gstatic.com/matchmaker/tclib_models/langid/v1/superpacks_manifest.zip'

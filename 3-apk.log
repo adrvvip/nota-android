@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  Restored /home/runner/work/nota-android/nota-android/src/managed/Nota.Application/Nota.Application.csproj (in 167 ms).
+  Restored /home/runner/work/nota-android/nota-android/src/managed/Nota.Domain/Nota.Domain.csproj (in 153 ms).
+  Restored /home/runner/work/nota-android/nota-android/src/managed/Nota.Remote/Nota.Remote.csproj (in 168 ms).
+  Restored /home/runner/work/nota-android/nota-android/src/managed/Nota.Infrastructure/Nota.Infrastructure.csproj (in 296 ms).
+  Restored /home/runner/work/nota-android/nota-android/src/managed/Nota.Presentation/Nota.Presentation.csproj (in 300 ms).
+  Restored /home/runner/work/nota-android/nota-android/src/managed/Nota.Mcp/Nota.Mcp.csproj (in 313 ms).
+  Restored /home/runner/work/nota-android/nota-android/src/managed/Nota.App/Nota.App.csproj (in 720 ms).
+total 82864
+drwxr-xr-x  2 runner runner     4096 Nov 22 19:33 .
+drwxr-xr-x 21 runner runner     4096 Nov 22 19:32 ..
+-rw-r--r--  1 runner runner   168448 Nov 22 19:31 _Microsoft.Android.Resource.Designer.dll
+-rw-r--r--  1 runner runner 42367503 Nov 22 19:33 app.nota.android-Signed.apk
+-rw-r--r--  1 runner runner 42301647 Nov 22 19:33 app.nota.android.apk

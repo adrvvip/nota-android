@@ -1,0 +1,1 @@
+97:11-22 19:39:23.874  4035  4336 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
