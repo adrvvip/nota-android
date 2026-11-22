@@ -36,7 +36,7 @@
     <NotaAndroidNativeDir Condition="'$(NotaAndroidNativeDir)' == ''">$(MSBuildProjectDirectory)/../../native/nota.engine/build-android</NotaAndroidNativeDir>
   </PropertyGroup>
   <ItemGroup Condition="'$(NotaAndroid)' == 'true'">
-    <Compile Remove="Program.cs;LinuxFileDialogs.cs" />
+    <Compile Remove="Program.cs" />
     <PackageReference Include="Avalonia.Android" Version="12.1.4" />
     <AndroidNativeLibrary Include="$(NotaAndroidNativeDir)/arm64-v8a/libnota_engine.so" Abi="arm64-v8a" />
   </ItemGroup>

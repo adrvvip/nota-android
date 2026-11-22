@@ -34,12 +34,12 @@ public sealed class AudioClipEditorView : UserControl
     public int ClipIndex { get; }
 
     private readonly WaveformView _wave = new();
-    private readonly TextBlock _startText = Mono("");
-    private readonly TextBlock _lengthText = Mono("");
-    private readonly TextBlock _pitchText = Mono("");
+    private readonly TextBlock _startText = ClipEditorKit.Mono("");
+    private readonly TextBlock _lengthText = ClipEditorKit.Mono("");
+    private readonly TextBlock _pitchText = ClipEditorKit.Mono("");
     private readonly TextBlock _fileText = Meta("—");
     private readonly TextBlock _warpModeText = new() { FontSize = NotaType.Body };
-    private readonly TextBlock _detectedText = Mono("—");
+    private readonly TextBlock _detectedText = ClipEditorKit.Mono("—");
     private readonly TextBlock _markerCount = Meta("");
     private readonly TextBlock _envTargetText = new() { Text = Loc.T("common.volume"), FontSize = NotaType.Body, Foreground = NotaPalette.TextPrimary };
     private readonly TextBlock _hint = Hint("");

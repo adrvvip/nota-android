@@ -24,7 +24,7 @@ internal static class MidiCardHeader
         ToolTip.SetTip(learn, Loc.T("device.midi.map_a_hardware_control_arm"));
         void Sync()
         {
-            bool on = TopLevel.GetTopLevel(learn) is MainWindow w && w.MidiLearnArmed;
+            bool on = WindowOf.Find(learn) is MainWindow w && w.MidiLearnArmed;
             learn.Background = on ? NotaPalette.AccentSubtle : NotaPalette.TrackOff;
             learn.BorderBrush = on ? NotaPalette.BorderBrass : NotaPalette.TrackOff;
             tb.Foreground = on ? NotaPalette.AccentHover : NotaPalette.TextPrimary;
@@ -33,7 +33,7 @@ internal static class MidiCardHeader
         {
             if (!ev.GetCurrentPoint(learn).Properties.IsLeftButtonPressed) return;
             ev.Handled = true;
-            if (TopLevel.GetTopLevel(learn) is MainWindow w) w.ToggleMidiLearn();
+            if (WindowOf.Find(learn) is MainWindow w) w.ToggleMidiLearn();
             Sync();
         };
         ctx.AddDeviceRefresher(Sync);

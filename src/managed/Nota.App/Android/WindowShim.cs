@@ -130,8 +130,23 @@ public class Window : ContentControl
     public ILauncher Launcher => TopLevel.GetTopLevel(this)!.Launcher;
     public IFocusManager? FocusManager => TopLevel.GetTopLevel(this)?.FocusManager;
     public IInsetsManager? InsetsManager => TopLevel.GetTopLevel(this)?.InsetsManager;
-    public IPlatformSettings? PlatformSettings => TopLevel.GetTopLevel(this)?.PlatformSettings;
     public TopLevel? Host => TopLevel.GetTopLevel(this);
+    public bool ShowActivated { get; set; } = true;
+
+    public static readonly RoutedEvent<RoutedEventArgs> WindowOpenedEvent =
+        RoutedEvent.Register<Window, RoutedEventArgs>("WindowOpened", RoutingStrategies.Direct);
+
+    /// <summary>Where Avalonia wants a TopLevel, a Nota window gives the view it lives in.</summary>
+    public static implicit operator TopLevel?(Window? w) => w is null ? null : TopLevel.GetTopLevel(w);
+
+    public static TopLevel? GetTopLevel(Visual? visual) => TopLevel.GetTopLevel(visual);
+
+    public void RequestAnimationFrame(Action<TimeSpan> action)
+    {
+        if (TopLevel.GetTopLevel(this) is { } top) top.RequestAnimationFrame(action);
+        else Avalonia.Threading.Dispatcher.UIThread.Post(() => action(TimeSpan.FromTicks(Environment.TickCount64 * TimeSpan.TicksPerMillisecond)),
+            Avalonia.Threading.DispatcherPriority.Render);
+    }
 
     public event EventHandler? Opened;
     public event EventHandler<WindowClosingEventArgs>? Closing;
@@ -168,6 +183,7 @@ public class Window : ContentControl
         owner?._owned.Add(this);
         _shown = true;
         WindowHost.Current?.Present(this, modal);
+        RaiseEvent(new RoutedEventArgs(WindowOpenedEvent, this));
         OnOpened(EventArgs.Empty);
         Activate();
     }
@@ -225,6 +241,17 @@ public class Window : ContentControl
             if (cur is Window w) return w;
         return WindowHost.Current?.Main;
     }
+}
+
+/// <summary>The file pickers (LinuxFileDialogs) called on a Nota window.</summary>
+public static class WindowPickers
+{
+    public static Task<IReadOnlyList<IStorageFile>> PickFilesAsync(this Window w, FilePickerOpenOptions options)
+        => TopLevel.GetTopLevel(w)!.PickFilesAsync(options);
+    public static Task<IStorageFile?> PickSaveFileAsync(this Window w, FilePickerSaveOptions options)
+        => TopLevel.GetTopLevel(w)!.PickSaveFileAsync(options);
+    public static Task<IReadOnlyList<IStorageFolder>> PickFoldersAsync(this Window w, FolderPickerOpenOptions options)
+        => TopLevel.GetTopLevel(w)!.PickFoldersAsync(options);
 }
 
 /// <summary>The single view Android shows: the main window full-size, every other window as

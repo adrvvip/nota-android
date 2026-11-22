@@ -112,7 +112,7 @@ internal sealed class DeviceWindow : NotaWindow
     /// window, wire MIDI Learn and forward its keys (transport, note keys, undo …).</summary>
     public void ShowFrom(Control anchor)
     {
-        if (TopLevel.GetTopLevel(anchor) is not Window owner) { Show(); return; }
+        if (WindowOf.Find(anchor) is not Window owner) { Show(); return; }
         if (owner is MainWindow mw)
         {
             EnableMidiLearn(mw.LearnService);

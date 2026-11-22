@@ -37,8 +37,8 @@ public sealed class MidiToolsView : UserControl
     private readonly StackPanel _paramList = new() { Spacing = 9 };
     private readonly TextBlock _paramTitle = new();
     private readonly TextBlock _scopeText = Meta("");
-    private readonly TextBlock _seedText = Mono("1");
-    private readonly TextBlock _resultText = Mono("", 10, NotaPalette.TextMuted);
+    private readonly TextBlock _seedText = ClipEditorKit.Mono("1");
+    private readonly TextBlock _resultText = ClipEditorKit.Mono("", 10, NotaPalette.TextMuted);
     private readonly Button _applyButton;
     private Action<int> _setKind = _ => { };
 
@@ -327,7 +327,7 @@ public sealed class MidiToolsView : UserControl
         {
             case MidiParamKind.Choice:
             {
-                var value = Mono(p.Display(settings[p.Id]));
+                var value = ClipEditorKit.Mono(p.Display(settings[p.Id]));
                 var drop = Dropdown(value, a => ShowMenu(a, p.Choices ?? Array.Empty<string>(), (int)Math.Round(settings[p.Id]), i =>
                 {
                     settings.Set(p.Id, i);

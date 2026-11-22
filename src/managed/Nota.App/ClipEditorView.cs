@@ -216,7 +216,7 @@ public sealed class ClipEditorView : UserControl
 
     private Control ScaleControls()
     {
-        _keyText = Mono("");
+        _keyText = ClipEditorKit.Mono("");
         _modeText = new TextBlock { FontSize = NotaType.Body };
         var sw = SwitchRow(Loc.T("clip_editor.scale"), () => Roll.ScaleOn, () => { Roll.SetScale(!Roll.ScaleOn, Roll.ScaleRoot, Roll.ScaleIndex); PaintScale(); }, out _syncScale);
         var key = Dropdown(_keyText, a => ShowMenu(a, PianoRollView.KeyNames, Roll.ScaleRoot, i => { Roll.SetScale(true, i, Roll.ScaleIndex); PaintScale(); }));

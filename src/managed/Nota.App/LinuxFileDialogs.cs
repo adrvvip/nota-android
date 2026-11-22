@@ -63,7 +63,7 @@ internal static class LinuxFileDialogs
         if (!_enabled || top.PlatformImpl?.TryGetFeature<IStorageProvider>() is not { } system)
             return await open(builtin);   // not Linux: StorageProvider is the system dialog
         if (SystemBroken) return await open(builtin);
-        var window = top as Window;
+        var window = WindowOf.Find(top);
         bool shown = false;
         void OnDeactivated(object? s, EventArgs e) => shown = true;
         if (window is not null) window.Deactivated += OnDeactivated;

@@ -443,7 +443,7 @@ internal sealed class HistoryView : UserControl
 
     private async Task DeleteUnnamed(IReadOnlyList<ProjectVersion> versions)
     {
-        if (TopLevel.GetTopLevel(this) is not Window owner || _dir is null || versions.Count == 0) return;
+        if (WindowOf.Find(this) is not Window owner || _dir is null || versions.Count == 0) return;
         bool ok = await new ConfirmWindow(Loc.T("history.delete_unnamed_versions"),
             Loc.Plural("history.delete_versions_and_the_audio", versions.Count),
             Loc.T("common.delete"), Loc.T("common.cancel")).ShowDialog<bool>(owner);
@@ -457,7 +457,7 @@ internal sealed class HistoryView : UserControl
     private async Task DeleteSelected(IReadOnlyList<ProjectVersion> versions)
     {
         if (versions.Count == 1) { await Delete(versions[0]); return; }
-        if (TopLevel.GetTopLevel(this) is not Window owner || _dir is null || versions.Count == 0) return;
+        if (WindowOf.Find(this) is not Window owner || _dir is null || versions.Count == 0) return;
         bool ok = await new ConfirmWindow(Loc.T("history.delete_versions"),
             Loc.Plural("history.delete_versions_audio_that_only", versions.Count),
             Loc.T("common.delete"), Loc.T("common.cancel")).ShowDialog<bool>(owner);
@@ -470,14 +470,14 @@ internal sealed class HistoryView : UserControl
 
     private async Task Prompt(string title, string prompt, string? initial, Action<string> apply)
     {
-        if (TopLevel.GetTopLevel(this) is not Window owner) return;
+        if (WindowOf.Find(this) is not Window owner) return;
         var text = await new TextPromptWindow(title, prompt, initial ?? "").ShowDialog<string?>(owner);
         if (text is not null) Apply(() => apply(text));
     }
 
     private async Task Delete(ProjectVersion v)
     {
-        if (TopLevel.GetTopLevel(this) is not Window owner || _dir is null) return;
+        if (WindowOf.Find(this) is not Window owner || _dir is null) return;
         bool ok = await new ConfirmWindow(Loc.T("history.delete_version"),
             Loc.F("history.delete_audio_that_only_this", Title(v)),
             Loc.T("common.delete"), Loc.T("common.cancel")).ShowDialog<bool>(owner);

@@ -426,7 +426,7 @@ internal sealed class TrackInspectorView : UserControl
     // Import → preview → (accepted) keep in the library and give the track. The file is only read.
     private async System.Threading.Tasks.Task ImportFromFile(int id, string path)
     {
-        if (TopLevel.GetTopLevel(this) is not Window owner) return;
+        if (WindowOf.Find(this) is not Window owner) return;
         var result = ArticulationImport.ImportFile(path);
         bool ok = await new ArticulationImportPreview(System.IO.Path.GetFileName(path), result).ShowDialog<bool>(owner);
         if (!ok || result.Map is not { } map) return;

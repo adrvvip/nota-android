@@ -627,7 +627,7 @@ public partial class MainWindow : NotaMainWindowBase
                 // its selected notes after a clip was clicked. A press outside the detail area
                 // lets it go; a focusable control pressed there still takes focus as usual (#646).
                 if (!_detailWasLastFocused && _editorRoll is { GridFocused: true } roll
-                    && TopLevel.GetTopLevel(roll) == this)
+                    && WindowOf.Find(roll) == this)
                     FocusManager?.Focus(null);
                 // Likewise the docked Mixer, so the palette opens with its context (specs/054).
                 _mixerWasLastFocused = _mixerDocked && v.GetSelfAndVisualAncestors().Contains(MixerPanel);

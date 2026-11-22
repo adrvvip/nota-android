@@ -31,11 +31,11 @@ public sealed class ClipPropsView : UserControl
     };
 
     private readonly PianoRollView _roll;
-    private readonly TextBlock _startText = Mono("");
-    private readonly TextBlock _lengthText = Mono("");
-    private readonly TextBlock _loopText = Mono("", NotaType.Body, NotaPalette.TextSecondary);
-    private readonly TextBlock _transposeText = Mono("");
-    private readonly TextBlock _gridText = Mono("");
+    private readonly TextBlock _startText = ClipEditorKit.Mono("");
+    private readonly TextBlock _lengthText = ClipEditorKit.Mono("");
+    private readonly TextBlock _loopText = ClipEditorKit.Mono("", NotaType.Body, NotaPalette.TextSecondary);
+    private readonly TextBlock _transposeText = ClipEditorKit.Mono("");
+    private readonly TextBlock _gridText = ClipEditorKit.Mono("");
     private readonly TextBlock _selText = StripLabel(Loc.T("clip_props.no_notes_selected"));
     private readonly StackPanel _selFields = new() { Orientation = Avalonia.Layout.Orientation.Horizontal, Spacing = 12 };
     private int _transpose;
@@ -173,7 +173,7 @@ public sealed class ClipPropsView : UserControl
         {
             var pair = new StackPanel { Orientation = Avalonia.Layout.Orientation.Horizontal, Spacing = 5 };
             pair.Children.Add(StripLabel(label));
-            pair.Children.Add(Mono(value, NotaType.Body));
+            pair.Children.Add(ClipEditorKit.Mono(value, NotaType.Body));
             _selFields.Children.Add(pair);
         }
     }
