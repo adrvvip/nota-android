@@ -59,6 +59,10 @@ internal static class LinuxFileDialogs
     // focus, or doesn't take the focus within ShowTimeout, the built-in one runs instead.
     private static async Task<T> Picker<T>(TopLevel top, Func<IStorageProvider, Task<T>> open, Func<T, bool> isEmpty)
     {
+#if ANDROID
+        // Android's pickers answer with content:// URIs; Nota wants file paths.
+        return await AndroidStorage.LocalizeAsync(top, await open(top.StorageProvider));
+#endif
         var builtin = top.StorageProvider;
         if (!_enabled || top.PlatformImpl?.TryGetFeature<IStorageProvider>() is not { } system)
             return await open(builtin);   // not Linux: StorageProvider is the system dialog

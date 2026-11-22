@@ -18,7 +18,12 @@ public static class NotaPaths
     public static string DataDir { get; } = ResolveDataDir();
 
     /// <summary>User home directory.</summary>
-    public static string Home => Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    public static string Home =>
+        // Android: the shared storage root the app was given (NOTA_USER_HOME, set by the
+        // Android entry point), where the user's projects and samples are visible.
+        OperatingSystem.IsAndroid() && Environment.GetEnvironmentVariable("NOTA_USER_HOME") is { Length: > 0 } android
+            ? android
+            : Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
     /// <summary>Ensures and returns a subfolder of <see cref="DataDir"/> (e.g. "logs", "presets").</summary>
     public static string SubDir(string name)

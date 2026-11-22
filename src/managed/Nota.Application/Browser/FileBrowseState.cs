@@ -124,6 +124,19 @@ public sealed class FileBrowseState
                         list.Add((info.Name, v));
                     }
             }
+            else if (OperatingSystem.IsAndroid())
+            {
+                // Android: the shared storage the app may use, then any SD card / USB drive.
+                if (Environment.GetEnvironmentVariable("NOTA_USER_HOME") is { Length: > 0 } shared)
+                    list.Add(("Internal storage", shared));
+                if (Directory.Exists("/storage"))
+                    foreach (var m in Directory.EnumerateDirectories("/storage"))
+                    {
+                        string n = Path.GetFileName(m);
+                        if (n is "emulated" or "self") continue;
+                        list.Add((n, m));
+                    }
+            }
             else
             {
                 list.Add(("/", "/"));

@@ -23,6 +23,7 @@ public static class UserDirs
     internal static string GetKnownDir(string xdgName, string fallbackName, Environment.SpecialFolder folder)
     {
         string home = NotaPaths.Home;
+        if (OperatingSystem.IsAndroid()) return Path.Combine(home, fallbackName);   // no XDG / Known Folders
         if (OperatingSystem.IsWindows() || OperatingSystem.IsMacOS())
         {
             try

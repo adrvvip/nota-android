@@ -24,7 +24,7 @@ public static class PathInput
             try { t = new Uri(t).LocalPath; } catch { return null; }
         }
         if (t == "~" || t.StartsWith("~/", StringComparison.Ordinal) || t.StartsWith("~\\", StringComparison.Ordinal))
-            t = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), t.Length > 2 ? t[2..] : "");
+            t = Path.Combine(OperatingSystem.IsAndroid() && Environment.GetEnvironmentVariable("NOTA_USER_HOME") is { Length: > 0 } ah ? ah : Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), t.Length > 2 ? t[2..] : "");
         if (!Path.IsPathRooted(t)) return null;
 
         string p = SampleFolderRules.Normalize(t);

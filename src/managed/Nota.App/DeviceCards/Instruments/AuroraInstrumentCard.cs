@@ -556,7 +556,7 @@ internal sealed class AuroraInstrumentCard : IInstrumentCard
         async void PickFile(Control anchor, int o)
         {
             if (TopLevel.GetTopLevel(anchor) is not { } top) return;
-            var files = await top.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+            var files = await top.PickFilesAsync(new FilePickerOpenOptions
             {
                 Title = Loc.F("device.aurora.import_a_wavetable_into_osc", o + 1), AllowMultiple = false,
                 FileTypeFilter = new[] { new FilePickerFileType(Loc.T("common.audio")) { Patterns = new[] { "*.wav", "*.flac", "*.mp3" } } },

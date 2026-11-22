@@ -26,7 +26,8 @@
     <AndroidManifest>Android/AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Android/Resources</MonoAndroidResourcePrefix>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
+    <NotaAndroidRids Condition="'$(NotaAndroidRids)' == ''">android-arm64</NotaAndroidRids>
+    <RuntimeIdentifiers>$(NotaAndroidRids)</RuntimeIdentifiers>
     <!-- Reflection (DI, JSON, compiled-binding fallbacks) is everywhere: no trimming. -->
     <PublishTrimmed>false</PublishTrimmed>
     <RunAOTCompilation>false</RunAOTCompilation>
