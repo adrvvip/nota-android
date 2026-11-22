@@ -18,7 +18,7 @@ namespace Nota.App;
 
 internal sealed class AndroidRootView : Border
 {
-    private const double DesktopWidth = 1280, DesktopHeight = 720;
+    private const double DesktopWidth = 1280, DesktopHeight = 680;
     private const double MinFit = 0.5;
 
     private readonly LayoutTransformControl _fit;
@@ -60,6 +60,7 @@ internal sealed class AndroidRootView : Border
         fit = Math.Round(fit, 2);
         if (Math.Abs(fit - Fit) < 0.005 && _fit.LayoutTransform is not null) return;
         Fit = fit;
+        Console.WriteLine($"Nota fit: view {Bounds.Width:0}x{Bounds.Height:0} pad {Padding} -> {fit}");
         _fit.LayoutTransform = fit >= 0.995 ? null : new ScaleTransform(fit, fit);
     }
 }
