@@ -361,7 +361,7 @@ public sealed partial class BrowserView
         var folders = _settings.ResolvedSampleFolders();
         if (item.PlaceIndex >= folders.Count) return;
         var f = folders[item.PlaceIndex];
-        var owner = TopLevel.GetTopLevel(this) as Window;
+        var owner = WindowOf.Find(this);
         flyout.Items.Add(MenuKit.Item(Loc.T("common.rename"), GlyphKind.Edit, () => { if (owner is not null) _ = SampleFolderUi.RenameAsync(owner, _settings, f); }));
         flyout.Items.Add(MenuKit.Item(Loc.T("browser.set_as_default"), null, () => _settings.SetDefaultSampleFolder(f.Index), enabled: !f.IsDefault && f.Available));
         flyout.Items.Add(new Separator());

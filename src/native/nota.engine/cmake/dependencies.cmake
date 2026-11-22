@@ -80,11 +80,14 @@ CPMAddPackage(
     URL_HASH "SHA256=ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
     DOWNLOAD_ONLY YES
 )
+# JUCE hosts plug-ins only; Android has none to host (pluginhost/android/PluginHostStub.cpp).
+if(NOT ANDROID)
 CPMAddPackage(
     NAME JUCE
     URL "https://github.com/juce-framework/JUCE/archive/refs/tags/8.0.14.tar.gz"
     URL_HASH "SHA256=ceb18e4ac9ab5ea71f3f20240d5852707767a1789ab43d06656a296da9e62f3e"
 )
+endif()
 # Steinberg ASIO SDK 2.3.4 (2025-10-15), used under its GPLv3 option (LICENSES/third-party.md
 # note 8). Windows only, headers only: common/asio.h, iasiodrv.h, asiosys.h — no SDK .cpp
 # is built (src/audio_io/windows/ talks to drivers through IASIO itself).

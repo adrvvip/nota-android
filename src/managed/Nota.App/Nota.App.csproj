@@ -12,13 +12,46 @@
     <ApplicationIcon Condition="$([MSBuild]::IsOSPlatform('Windows')) or $(RuntimeIdentifier.StartsWith('win'))">..\..\..\assets\icons\windows\nota.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <!-- Android build (-p:NotaAndroid=true): the same app as an APK. No OS windows there:
+       Android/WindowShim.cs stands in for Window, Android/AndroidApp.cs is the entry point. -->
+  <PropertyGroup Condition="'$(NotaAndroid)' == 'true'">
+    <TargetFramework>net10.0-android</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <SupportedOSPlatformVersion>26</SupportedOSPlatformVersion>
+    <ApplicationId>app.nota.android</ApplicationId>
+    <ApplicationTitle>Nota</ApplicationTitle>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>$(NotaVersion)</ApplicationDisplayVersion>
+    <ApplicationManifest></ApplicationManifest>
+    <AndroidManifest>Android/AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Android/Resources</MonoAndroidResourcePrefix>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
+    <!-- Reflection (DI, JSON, compiled-binding fallbacks) is everywhere: no trimming. -->
+    <PublishTrimmed>false</PublishTrimmed>
+    <RunAOTCompilation>false</RunAOTCompilation>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidUseAssemblyStore>true</AndroidUseAssemblyStore>
+    <NotaAndroidNativeDir Condition="'$(NotaAndroidNativeDir)' == ''">$(MSBuildProjectDirectory)/../../native/nota.engine/build-android</NotaAndroidNativeDir>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(NotaAndroid)' == 'true'">
+    <Compile Remove="Program.cs;LinuxFileDialogs.cs" />
+    <PackageReference Include="Avalonia.Android" Version="12.1.4" />
+    <AndroidNativeLibrary Include="$(NotaAndroidNativeDir)/arm64-v8a/libnota_engine.so" Abi="arm64-v8a" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(NotaAndroid)' != 'true'">
+    <Compile Remove="Android/**" />
+    <None Include="Android/**" />
+  </ItemGroup>
+
   <ItemGroup>
     <!-- specs/101: the headless Modular checks drive the picker panel directly. -->
     <InternalsVisibleTo Include="Nota.ModularUiTest" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="12.1.4" />
-    <PackageReference Include="Avalonia.Desktop" Version="12.1.4" />
+    <PackageReference Include="Avalonia.Desktop" Version="12.1.4" Condition="'$(NotaAndroid)' != 'true'" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.4" />
     <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3">
       <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
@@ -112,7 +145,7 @@
     <NotaScanWorkerName>nota-scanworker</NotaScanWorkerName>
   </PropertyGroup>
   <PropertyGroup>
-    <NotaCopyNative Condition="'$(NotaTargetMac)' == 'true' or '$(NotaTargetWin)' == 'true' or '$(NotaTargetLinux)' == 'true'">true</NotaCopyNative>
+    <NotaCopyNative Condition="'$(NotaAndroid)' != 'true' and ('$(NotaTargetMac)' == 'true' or '$(NotaTargetWin)' == 'true' or '$(NotaTargetLinux)' == 'true')">true</NotaCopyNative>
   </PropertyGroup>
   <ItemGroup Condition="'$(NotaCopyNative)' == 'true' and Exists('$(NotaEngineLib)')">
     <None Include="$(NotaEngineLib)">

@@ -248,7 +248,7 @@ public sealed partial class ModularView
         w.Closed += (_, _) => _scopeWindows.Remove((t, modId));
         // After the click has finished (the button opens on release), owned by the window that
         // holds the node, so it stays in front of it.
-        var owner = TopLevel.GetTopLevel(anchor) as Window;
+        var owner = WindowOf.Find(anchor);
         Dispatcher.UIThread.Post(() => { w.ShowOver(owner); w.Activate(); }, DispatcherPriority.Background);
     }
 

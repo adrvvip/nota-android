@@ -64,7 +64,7 @@ public sealed partial class PreferencesWindow
         {
             // The usual close: it asks about unsaved changes, and cancelling that cancels the
             // restart (MainWindow.Recovery). The relaunch itself runs when the app exits.
-            var main = (Avalonia.Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
+            var main = AppWindows.Main;
             if (main is null) return;
             AppRestart.Request();
             main.Close();

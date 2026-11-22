@@ -27,6 +27,10 @@
 #define MA_ENABLE_ONLY_SPECIFIC_BACKENDS
 #if defined(_WIN32)
 #define MA_ENABLE_WASAPI
+#elif defined(__ANDROID__)
+// AAudio (API 26+) first, OpenSL ES as the fallback on older devices.
+#define MA_ENABLE_AAUDIO
+#define MA_ENABLE_OPENSL
 #elif defined(__linux__)
 // Order sets miniaudio's default preference: PulseAudio first, then ALSA.
 #define MA_ENABLE_PULSEAUDIO

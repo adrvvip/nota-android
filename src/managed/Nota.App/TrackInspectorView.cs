@@ -345,7 +345,7 @@ internal sealed class TrackInspectorView : UserControl
         var manage = new Button { Height = NotaSize.Shell, Padding = new Thickness(10, 0), Margin = new Thickness(6, 0, 0, 0), Content = Loc.T("articulations.inspector.edit_maps") };
         ToolTip.SetTip(manage, Loc.T("articulations.inspector.edit_maps_tip"));
         manage.Click += (_, _) =>
-            ((Avalonia.Application.Current?.ApplicationLifetime as Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime)?.MainWindow as MainWindow)?.ShowArticulationMaps();
+            (AppWindows.Main as MainWindow)?.ShowArticulationMaps();
         buttons.Children.Add(manage);
         if (map is not null)
         {

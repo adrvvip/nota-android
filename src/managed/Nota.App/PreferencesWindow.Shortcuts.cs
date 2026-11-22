@@ -573,7 +573,7 @@ public partial class PreferencesWindow
     {
         if (Keys.Capturing == on) return;
         Keys.Capturing = on;
-        if ((Avalonia.Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow is MainWindow mw)
+        if (AppWindows.Main is MainWindow mw)
             mw.SuspendMenuGestures(on);
     }
 

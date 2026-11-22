@@ -202,8 +202,7 @@ internal static class NotaSkin
     /// <summary>Re-coerce every open window, so controls built under another skin take this one.</summary>
     public static void Reapply()
     {
-        if (Avalonia.Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop) return;
-        foreach (var window in desktop.Windows) Reapply(window);
+        foreach (var window in AppWindows.All) Reapply(window);
     }
 
     /// <summary>Re-coerce one tree (a window, or an offscreen preview root).</summary>

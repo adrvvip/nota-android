@@ -47,7 +47,7 @@ public partial class MainWindow
         if (Keys.Is(e, CommandCatalog.Palette)
             && (KeyTokens.Chord(e) is { IsChord: true } || e.Source is not (TextBox or NumericUpDown)))
         {
-            TogglePalette(e.Source is Avalonia.Visual v ? TopLevel.GetTopLevel(v) as Window : null);
+            TogglePalette(e.Source is Avalonia.Visual v ? WindowOf.Find(v) : null);
             e.Handled = true;
             return;
         }

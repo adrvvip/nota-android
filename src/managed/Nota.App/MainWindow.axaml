@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
-<Window xmlns="https://github.com/avaloniaui"
+<app:NotaMainWindowBase xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,9 +13,9 @@
         Icon="/Assets/logo.png"
         WindowState="Maximized"
         Title="Nota">
-  <Window.Resources>
+  <app:NotaMainWindowBase.Resources>
     <app:ToolbarSideToAlignmentConverter x:Key="ToolbarSideToAlignment"/>
-  </Window.Resources>
+  </app:NotaMainWindowBase.Resources>
   <NativeMenu.Menu>
     <NativeMenu>
       <NativeMenuItem Header="{app:T 'common.file'}">
@@ -689,4 +689,4 @@
     <!-- Command palette + its toast (MainWindow.Palette.cs); empty until ⌘⇧P. -->
     <Panel x:Name="PaletteLayer"/>
   </Panel>
-</Window>
+</app:NotaMainWindowBase>

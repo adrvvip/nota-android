@@ -314,6 +314,11 @@ elseif(WIN32)
     target_include_directories(nota_engine SYSTEM PRIVATE ${asiosdk_SOURCE_DIR}/common)
     target_compile_definitions(nota_engine PRIVATE NOTA_HAS_ASIO=1)
     target_link_libraries(nota_engine PRIVATE advapi32 user32 avrt)
+elseif(ANDROID)
+    # Android: miniaudio talks to AAudio / OpenSL ES, loaded at run time (dlopen), so only
+    # the NDK's log/dl/m are linked. RtMidi builds its dummy API (no Android backend):
+    # MIDI on Android reaches the engine from the app side (android.media.midi).
+    target_link_libraries(nota_engine PRIVATE log dl m)
 elseif(UNIX AND NOT APPLE)
     # RtMidi -> ALSA sequencer (__LINUX_ALSA__), which links libasound directly.
     # miniaudio runtime-links PulseAudio/ALSA via dlopen (see nota_miniaudio.h), so
@@ -357,6 +362,18 @@ target_link_libraries(nota_engine PRIVATE FLAC lame nlohmann_json::nlohmann_json
 # hosting split (PluginHost/PluginCommon/NotaPlayHead/
 # PluginEditorWindow/PluginInstrument/PluginEffect) + scanner ABI
 # (abi_pluginscanner) and coordinator (PluginCatalog/OutOfProcessScanner).
+if(ANDROID)
+    # No plug-in formats exist on Android: the pluginhost module is a stub (no JUCE), the
+    # scan worker and the plug-in test targets are not built.
+    add_library(nota_pluginhost STATIC pluginhost/android/PluginHostStub.cpp)
+    target_include_directories(nota_pluginhost PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/pluginhost)
+    target_link_libraries(nota_engine PRIVATE
+        $<LINK_LIBRARY:WHOLE_ARCHIVE,nota_pluginhost>)
+    target_link_options(nota_engine PRIVATE
+        "LINKER:--version-script=${CMAKE_CURRENT_SOURCE_DIR}/nota_exports.map")
+else()
 add_library(nota_pluginhost STATIC
     pluginhost/hosting/PluginHost.cpp
     pluginhost/hosting/PluginCommon.cpp
@@ -509,13 +526,15 @@ if(APPLE)
     target_link_libraries(nota-scanner-selftest PRIVATE "-framework CoreAudioKit")
 endif()
 
+endif() # NOT ANDROID
+
 # --- Nota Pentad as a standalone VST3 (debugging in third-party hosts) -------
 # Off by default: the app runs Pentad in-process; this wraps the same DSP
 # (devices/instruments/Pentad.h/.cpp) in a JUCE plugin with the generic editor. Configure with
 # -DNOTA_BUILD_PENTAD_VST3=ON and build the `NotaPentad_VST3` target; the bundle lands
 # in <build>/NotaPentad_artefacts/<config>/VST3/.
 option(NOTA_BUILD_PENTAD_VST3 "Build Nota Pentad as a standalone VST3 plugin" OFF)
-if(NOTA_BUILD_PENTAD_VST3)
+if(NOTA_BUILD_PENTAD_VST3 AND NOT ANDROID)
     juce_add_plugin(NotaPentad
         COMPANY_NAME "Nota"
         PRODUCT_NAME "Nota Pentad"

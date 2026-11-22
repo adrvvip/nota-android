@@ -135,7 +135,7 @@ internal sealed class ShowMeController
             if (target is null) { LastGuidance = Loc.T("assistant.control_missing"); DrawBar(walk.Steps[_step], LastGuidance); return; }
             target = _window.ShedFallback(target) ?? target;
             // The control may live in a popped-out Detail or Mixer window: bring that one forward.
-            if (TopLevel.GetTopLevel(target) is Window w)
+            if (WindowOf.Find(target) is Window w)
             {
                 Hook(w);
                 if (!w.IsActive) w.Activate();

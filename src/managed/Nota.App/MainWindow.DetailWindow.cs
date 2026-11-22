@@ -50,8 +50,7 @@ public partial class MainWindow
     // Run the pending layout of every open window except `keep` (see SetHost).
     private static void FlushOtherWindows(TopLevel? keep)
     {
-        if (Avalonia.Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop) return;
-        foreach (var w in desktop.Windows)
+        foreach (var w in AppWindows.All)
             if (!ReferenceEquals(w, keep)) w.UpdateLayout();
     }
 

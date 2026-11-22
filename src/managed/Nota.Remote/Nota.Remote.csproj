@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" Condition="'$(NotaAndroid)' != 'true'" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,5 +52,13 @@
       <EmbeddedResource Include="@(_RemoteWeb)" LogicalName="wwwroot/%(_RemoteWeb.RecursiveDir)%(_RemoteWeb.Filename)%(_RemoteWeb.Extension)" />
     </ItemGroup>
   </Target>
+
+  <!-- Android (-p:NotaAndroid=true): no ASP.NET Core there; RemoteServer.Android.cs stands in for RemoteServer.cs. -->
+  <ItemGroup Condition="'$(NotaAndroid)' == 'true'">
+    <Compile Remove="RemoteServer.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(NotaAndroid)' != 'true'">
+    <Compile Remove="RemoteServer.Android.cs" />
+  </ItemGroup>
 
 </Project>

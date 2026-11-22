@@ -310,8 +310,7 @@ internal static class NotaThemeService
     // them, so a colour change is invisible until the visual is asked to draw again.
     private static void RepaintEverything()
     {
-        if (Avalonia.Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop) return;
-        foreach (var w in desktop.Windows) Invalidate(w);
+        foreach (var w in AppWindows.All) Invalidate(w);
     }
 
     private static void Invalidate(Visual v)

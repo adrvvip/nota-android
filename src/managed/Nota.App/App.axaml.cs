@@ -202,6 +202,10 @@ public partial class App : Avalonia.Application
             pump.Start();
         }
 
+#if ANDROID
+        if (ApplicationLifetime is ISingleViewApplicationLifetime single)
+            StartSingleView(single, log);
+#else
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // A downloaded update installs once the app is gone (see AppUpdater).
@@ -271,9 +275,39 @@ public partial class App : Avalonia.Application
                 }
             }, Avalonia.Threading.DispatcherPriority.Background);
         }
+#endif
 
         base.OnFrameworkInitializationCompleted();
     }
+
+#if ANDROID
+    /// <summary>Android: one view. The main window fills it (WindowHost); every other window
+    /// floats above it. No splash: the activity's own launch screen covers the start.</summary>
+    private void StartSingleView(ISingleViewApplicationLifetime single, ILogSink log)
+    {
+        var host = new WindowHost();
+        single.MainView = host;
+        Avalonia.Threading.Dispatcher.UIThread.Post(() =>
+        {
+            var recovery = Services.GetRequiredService<IRecoveryStore>();
+            var pending = recovery.PendingRecovery();
+            recovery.BeginSession();
+
+            var vm = Services.GetRequiredService<MainWindowViewModel>();   // constructs the engine
+            try { OutputSetupAccess.Push(vm.Engine); }
+            catch (Exception e) { log.Error("Couldn't apply the output setup", e); }
+            vm.AudioApplied += () =>
+            {
+                try { InputSetupAccess.Push(vm.Engine); }
+                catch (Exception e) { log.Error("Couldn't apply the Audio I/O setup", e); }
+                try { OutputSetupAccess.Push(vm.Engine); }
+                catch (Exception e) { log.Error("Couldn't apply the output setup", e); }
+            };
+            var main = new MainWindow { DataContext = vm, PendingRecovery = pending };
+            main.Show();
+        }, Avalonia.Threading.DispatcherPriority.Background);
+    }
+#endif
 
     /// <summary>Installs the interface language for this run. The saved choice, unless
     /// NOTA_UI_LANGUAGE names one — a code, or the path of a language file (spec 077) — which
@@ -329,8 +363,7 @@ public partial class App : Avalonia.Application
     }
 
     // macOS application-menu items (About / Check for updates / Settings) forward to the main window.
-    private MainWindow? MainWin =>
-        (ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow as MainWindow;
+    private MainWindow? MainWin => AppWindows.Main as MainWindow;
     private void OnAppAbout(object? sender, EventArgs e) => MainWin?.ShowAbout();
     private void OnAppPreferences(object? sender, EventArgs e) => MainWin?.ShowPreferences();
     private void OnAppCheckUpdates(object? sender, EventArgs e) => _ = MainWin?.CheckForUpdatesAsync();

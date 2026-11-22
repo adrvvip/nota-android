@@ -135,7 +135,7 @@ internal static class SkinPreviewRenderer
 
     private static byte[]? RenderLive(Surface s, List<Visual> touched, ClipStyle clips)
     {
-        if (Avalonia.Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime { MainWindow: MainWindow main })
+        if (AppWindows.Main is not MainWindow main)
             return null;
         Control? target = s.Name switch
         {

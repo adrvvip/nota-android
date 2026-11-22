@@ -240,8 +240,7 @@ internal sealed class ConnectPhoneView : Border
 
     // The window the popup opens from: it reaches the browser and the clipboard, which a popup's
     // own root may not.
-    private TopLevel? Host => (Avalonia.Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow
-        ?? TopLevel.GetTopLevel(this);
+    private TopLevel? Host => TopLevel.GetTopLevel(AppWindows.Main ?? (Avalonia.Visual)this);
 
     // A dim address row that takes a click.
     private static Control OtherRow(string text, string tip, Action click)

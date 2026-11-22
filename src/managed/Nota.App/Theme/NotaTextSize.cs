@@ -78,8 +78,7 @@ internal static class NotaTextSize
         int s = TextSize.Normalize(step);
         if (s == _step) return;
         _step = s;
-        if (Avalonia.Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop) return;
-        foreach (var window in desktop.Windows) Reapply(window);
+        foreach (var window in AppWindows.All) Reapply(window);
     }
 
     /// <summary>Re-coerce the text in one tree to the current step (a window, or a preview root).</summary>

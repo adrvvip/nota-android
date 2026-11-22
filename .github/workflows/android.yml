@@ -1,0 +1,107 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# Android APK build (fork: adrvvip/nota-android).
+# The native engine is built with the NDK (arm64-v8a), the app with the .NET Android
+# workload (-p:NotaAndroid=true). Each run's logs are pushed to the `ci-logs` branch and a
+# successful APK is attached to the `android-latest` pre-release.
+name: android
+
+on:
+  push:
+    branches: [android]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      DOTNET_NOLOGO: "1"
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+      CPM_SOURCE_CACHE: ${{ github.workspace }}/.cpm-cache
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            .cpm-cache
+            ~/.nuget/packages
+          key: android-deps-${{ hashFiles('src/native/nota.engine/cmake/dependencies.cmake', 'src/managed/**/*.csproj') }}
+          restore-keys: android-deps-
+
+      - name: Prepare logs
+        run: mkdir -p ci-logs && echo "started $(date -u)" > ci-logs/status.txt
+
+      - name: Android workload
+        run: |
+          set -o pipefail
+          dotnet --info 2>&1 | tee ci-logs/0-dotnet-info.log
+          dotnet workload install android 2>&1 | tee ci-logs/1-workload.log
+
+      - name: Native engine (NDK, arm64-v8a)
+        run: |
+          set -o pipefail
+          NDK="${ANDROID_NDK_LATEST_HOME:-$ANDROID_NDK_HOME}"
+          echo "NDK=$NDK" | tee ci-logs/2-native.log
+          cmake -S src/native/nota.engine -B build-ndk -G Ninja \
+            -DCMAKE_TOOLCHAIN_FILE="$NDK/build/cmake/android.toolchain.cmake" \
+            -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-26 -DANDROID_STL=c++_static \
+            -DCMAKE_BUILD_TYPE=Release -DNOTA_BUILD_RENDER_PROBE=OFF 2>&1 | tee -a ci-logs/2-native.log
+          cmake --build build-ndk --target nota_engine -- -k 0 2>&1 | tee -a ci-logs/2-native.log
+          mkdir -p src/native/nota.engine/build-android/arm64-v8a
+          cp build-ndk/libnota_engine.so src/native/nota.engine/build-android/arm64-v8a/
+          ls -la src/native/nota.engine/build-android/arm64-v8a | tee -a ci-logs/2-native.log
+
+      - name: APK
+        run: |
+          set -o pipefail
+          dotnet publish src/managed/Nota.App/Nota.App.csproj -c Release -f net10.0-android \
+            -p:NotaAndroid=true -p:AndroidSdkDirectory="$ANDROID_HOME" -o out \
+            -clp:ErrorsOnly -clp:NoSummary 2>&1 | tee ci-logs/3-apk.log
+          ls -la out | tee -a ci-logs/3-apk.log
+          cp "$(ls out/*-Signed.apk | head -1)" Nota-android-arm64.apk
+
+      - name: Publish APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view android-latest >/dev/null 2>&1 || \
+            gh release create android-latest --prerelease --title "Nota Android (latest build)" \
+              --notes "Automatic build of the android branch." --target "$GITHUB_SHA"
+          gh release upload android-latest Nota-android-arm64.apk --clobber
+          echo "apk: Nota-android-arm64.apk $(stat -c %s Nota-android-arm64.apk) bytes" >> ci-logs/status.txt
+
+      - name: Push logs
+        if: always()
+        run: |
+          echo "result: ${{ job.status }} sha: $GITHUB_SHA run: $GITHUB_RUN_ID finished $(date -u)" >> ci-logs/status.txt
+          cd ci-logs
+          for f in *.log; do
+            [ -f "$f" ] || continue
+            grep -n -E "error|Error|ERROR|FAILED|warning XA|fatal" "$f" | head -400 > "${f%.log}.errors.txt" || true
+            tail -n 1500 "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+          done
+          git init -q -b ci-logs .
+          git config user.name "ci" && git config user.email "ci@users.noreply.github.com"
+          git add -A && git commit -q -m "logs for ${GITHUB_SHA} (${{ job.status }})"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" ci-logs:ci-logs

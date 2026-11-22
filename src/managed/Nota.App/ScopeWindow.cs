@@ -72,7 +72,7 @@ internal sealed class ScopeWindow : NotaWindow
     /// its keys (transport, undo …) as the device window does.</summary>
     public void ShowOver(Window? owner)
     {
-        owner ??= (Avalonia.Application.Current?.ApplicationLifetime as Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime)?.MainWindow;
+        owner ??= AppWindows.Main;
         if (owner is null) { Show(); return; }
         if (owner is MainWindow mw)
         {

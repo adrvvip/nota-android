@@ -25,7 +25,7 @@ using Nota.Application.Localization;
 
 namespace Nota.App;
 
-public partial class MainWindow : Window
+public partial class MainWindow : NotaMainWindowBase
 {
     private MainWindowViewModel? _vm;
     private readonly HashSet<Key> _heldKeys = new();
