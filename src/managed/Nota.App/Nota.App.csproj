@@ -38,7 +38,8 @@
   <ItemGroup Condition="'$(NotaAndroid)' == 'true'">
     <Compile Remove="Program.cs" />
     <PackageReference Include="Avalonia.Android" Version="12.1.4" />
-    <AndroidNativeLibrary Include="$(NotaAndroidNativeDir)/arm64-v8a/libnota_engine.so" Abi="arm64-v8a" />
+    <AndroidNativeLibrary Include="$(NotaAndroidNativeDir)/arm64-v8a/libnota_engine.so" Abi="arm64-v8a" Condition="Exists('$(NotaAndroidNativeDir)/arm64-v8a/libnota_engine.so')" />
+    <AndroidNativeLibrary Include="$(NotaAndroidNativeDir)/x86_64/libnota_engine.so" Abi="x86_64" Condition="Exists('$(NotaAndroidNativeDir)/x86_64/libnota_engine.so')" />
   </ItemGroup>
   <ItemGroup Condition="'$(NotaAndroid)' != 'true'">
     <Compile Remove="Android/**" />
