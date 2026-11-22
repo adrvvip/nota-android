@@ -18,7 +18,7 @@ namespace Nota.App;
 
 internal sealed class AndroidRootView : Border
 {
-    private const double DesktopWidth = 1280, DesktopHeight = 680;
+    private const double DesktopWidth = 1100, DesktopHeight = 600;
     private const double MinFit = 0.5;
 
     private readonly LayoutTransformControl _fit;
@@ -47,7 +47,11 @@ internal sealed class AndroidRootView : Border
 
     private void ApplySafeArea(Avalonia.Controls.Platform.IInsetsManager insets)
     {
-        Padding = insets.SafeAreaPadding;
+        // The safe area comes in device pixels; layout is in DIPs.
+        var p = insets.SafeAreaPadding;
+        double k = TopLevel.GetTopLevel(this)?.RenderScaling ?? 1;
+        if (k <= 0) k = 1;
+        Padding = new Thickness(p.Left / k, p.Top / k, p.Right / k, p.Bottom / k);
         Refit();
     }
 
